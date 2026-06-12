@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>诗话桥 / 诗画桥 内容档案</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__shade"></div>
+      <section class="hero__content" aria-labelledby="page-title">
+        <h1 id="page-title">诗话桥课程档案</h1>
+        <p class="hero__intro">
+          采集关键词：诗话桥 / 诗画桥。汇总文章、视频与社交讨论。
+        </p>
+      </section>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="内容筛选">
+        <label class="search-box">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="标题、摘要、作者" autocomplete="off" />
+        </label>
+
+        <div class="control-group" role="group" aria-label="平台">
+          <button class="chip is-active" data-filter="platform" data-value="all">全部平台</button>
+          <button class="chip" data-filter="platform" data-value="wechat-search">微信搜索</button>
+          <button class="chip" data-filter="platform" data-value="csu-bridge-center">中南大学古桥研究中心</button>
+          <button class="chip" data-filter="platform" data-value="bilibili">B站</button>
+          <button class="chip" data-filter="platform" data-value="weibo">微博</button>
+        </div>
+
+        <div class="control-row">
+          <div class="segmented" role="group" aria-label="内容分类">
+            <button class="segment is-active" data-filter="category" data-value="all">全部</button>
+            <button class="segment" data-filter="category" data-value="news">资讯</button>
+            <button class="segment" data-filter="category" data-value="homework">作业展示</button>
+          </div>
+
+          <div class="segmented" role="group" aria-label="内容类型">
+            <button class="segment is-active" data-filter="type" data-value="all">全部</button>
+            <button class="segment" data-filter="type" data-value="article">文章</button>
+            <button class="segment" data-filter="type" data-value="video">视频</button>
+          </div>
+
+          <label class="select-label">
+            <span>排序</span>
+            <select id="sortSelect">
+              <option value="newest">最新优先</option>
+              <option value="oldest">最早优先</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="内容概览">
+        <div>
+          <strong id="totalCount">0</strong>
+          <span>条内容</span>
+        </div>
+        <div>
+          <strong id="articleCount">0</strong>
+          <span>文章</span>
+        </div>
+        <div>
+          <strong id="videoCount">0</strong>
+          <span>视频</span>
+        </div>
+        <div>
+          <strong id="sourceCount">0</strong>
+          <span>个平台</span>
+        </div>
+      </section>
+
+      <section class="results-head" aria-label="结果统计">
+        <p id="resultMeta">正在载入...</p>
+      </section>
+
+      <section id="contentGrid" class="content-grid" aria-live="polite"></section>
+      <p id="emptyState" class="empty-state" hidden>
+        暂无通过核验的内容。请把带有精准 sourceUrl 和准确 summary 的内容数据写入 data/items.json。
+      </p>
+    </main>
+
+    <template id="itemTemplate">
+      <article class="item-card">
+        <div class="item-card__meta">
+          <span class="platform-pill"></span>
+          <span class="type-pill"></span>
+          <span class="category-pill" hidden></span>
+          <time></time>
+        </div>
+        <h3></h3>
+        <p class="summary"></p>
+        <div class="item-tags" aria-label="内容标签"></div>
+        <div class="item-card__footer">
+          <a class="source-link" target="_blank" rel="noreferrer">查看原文</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

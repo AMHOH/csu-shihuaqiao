@@ -1,0 +1,17 @@
+{
+  "name": "bridge-archive",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "discover:wechat": "node tools/discover-wechat.mjs",
+    "resolve:wechat": "node tools/resolve-wechat.mjs",
+    "scrape:all": "node tools/scrape-all.mjs",
+    "scrape:csu": "node tools/scrape-csu-bridge-center.mjs",
+    "scrape:wechat": "node tools/scrape-wechat.mjs",
+    "scrape:weibo": "node tools/scrape-weibo.mjs",
+    "validate": "node tools/validate-items.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.60.0"
+  }
+}
