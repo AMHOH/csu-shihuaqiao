@@ -10,6 +10,7 @@
   --rust: #9c543a;
   --gold: #8a6418;
   --shadow: 0 22px 60px rgba(16, 20, 18, 0.24);
+  --page-background: url("./assets/bridge-desktop.jpg");
   --serif:
     ui-serif, "Songti SC", "Noto Serif SC", Georgia, Cambria, "Times New Roman",
     "STSong", SimSun, serif;
@@ -47,7 +48,7 @@ body::after {
 body::before {
   inset: -24px;
   z-index: 0;
-  background: url("./assets/hero-bridge-archive.png") center / cover no-repeat;
+  background: var(--page-background) center / cover no-repeat;
   filter: blur(10px);
   transform: scale(1.04);
 }
@@ -467,50 +468,141 @@ select {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --page-background: url("./assets/bridge-mobile.jpg");
+  }
+
   .hero__content,
   main {
-    width: min(100% - 22px, 960px);
+    width: min(100% - 24px, 960px);
   }
 
   .hero {
-    min-height: 600px;
-    padding: 48px 0 108px;
+    min-height: 440px;
+    padding: 44px 0 84px;
+    place-items: end center;
   }
 
   h1 {
-    font-size: clamp(34px, 10vw, 48px);
-    letter-spacing: 0.08em;
+    font-size: clamp(31px, 9.2vw, 42px);
+    letter-spacing: 0.06em;
     white-space: nowrap;
   }
 
   .hero__intro {
-    letter-spacing: 0.08em;
+    max-width: 20rem;
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
   }
 
   main {
-    margin-top: -74px;
+    margin-top: -58px;
+    padding-bottom: 48px;
   }
 
   .toolbar {
+    gap: 12px;
     padding: 12px;
   }
 
   .control-group {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-inline: -2px;
+    overflow-x: auto;
+    padding: 0 2px 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .control-group::-webkit-scrollbar {
+    display: none;
   }
 
   .chip {
-    width: 100%;
-    padding-inline: 8px;
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 36px;
+    padding-inline: 12px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
-  .stats,
+  .chip[data-value="csu-bridge-center"] {
+    grid-column: auto;
+  }
+
+  .control-row {
+    gap: 10px;
+  }
+
+  .segmented {
+    gap: 3px;
+    padding: 3px;
+  }
+
+  .segment {
+    min-height: 36px;
+    padding-inline: 6px;
+  }
+
+  .select-label {
+    justify-content: space-between;
+  }
+
+  .select-label select {
+    width: auto;
+    min-width: 10rem;
+  }
+
+  .stats {
+    gap: 6px;
+    margin: 16px 0 18px;
+  }
+
+  .stats div {
+    padding: 10px 8px;
+  }
+
+  .stats strong {
+    font-size: 24px;
+  }
+
+  .stats span {
+    font-size: 12px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .content-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .results-head {
+    margin-bottom: 10px;
+  }
+
+  .results-head p {
+    text-align: left;
+    font-size: 13px;
   }
 
   .item-card {
     min-height: auto;
+    padding: 16px;
+  }
+
+  .item-card h3 {
+    margin-top: 14px;
+    font-size: 19px;
+  }
+
+  .summary {
+    line-height: 1.76;
   }
 }
