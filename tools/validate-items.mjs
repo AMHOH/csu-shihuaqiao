@@ -6,14 +6,16 @@ const items = JSON.parse(fs.readFileSync(file, "utf8"));
 const validPlatforms = new Set([
   "wechat-search",
   "csu-bridge-center",
+  "site-homework",
   "hunan-cppcc-news",
   "yueyang-news",
   "visit-beijing",
   "changsha-evening-news",
+  "xingchen-news",
   "bilibili",
   "weibo",
 ]);
-const validTypes = new Set(["article", "video"]);
+const validTypes = new Set(["article", "video", "file"]);
 const validSummarySources = new Set([
   "raw_excerpt",
   "meta_description",
@@ -72,6 +74,7 @@ function isExactContentUrl(value) {
   try {
     const parsed = new URL(value);
     const path = parsed.pathname.replace(/\/+$/, "");
+    const isSiteContent = parsed.protocol === "site:" && value.startsWith("site://homework/");
     const isSearchPage =
       parsed.hostname.includes("sogou.com") ||
       parsed.pathname.includes("/search") ||
@@ -79,7 +82,7 @@ function isExactContentUrl(value) {
       parsed.searchParams.has("query");
     const isHomepage = path === "" || path === "/";
 
-    return !isSearchPage && !isHomepage;
+    return isSiteContent || (!isSearchPage && !isHomepage);
   } catch {
     return false;
   }

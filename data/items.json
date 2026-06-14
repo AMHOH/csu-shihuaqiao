@@ -1,5 +1,42 @@
 [
   {
+    "id": "wechat-search-channels-weixin-qq-com-finder-preview-pages-sph-id-adn31ebg29",
+    "platform": "wechat-search",
+    "type": "video",
+    "keyword": "诗话桥",
+    "title": "中国诗词大会杨雨教授与”诗话桥“团队来隆回啦",
+    "author": "微信视频号",
+    "summary": "中国诗词大会杨雨教授与“诗话桥”团队来隆回相关视频号内容。",
+    "summarySource": "manual_verified",
+    "publishedAt": "2026-06-14",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://channels.weixin.qq.com/finder-preview/pages/sph?id=AdN31Ebg29",
+    "tags": [
+      "微信视频号",
+      "诗话桥",
+      "视频号"
+    ]
+  },
+  {
+    "id": "wechat-search-诗画桥-2025-11-23-109学报-诗画为舟-桥渡千年",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗画桥",
+    "title": "诗画为舟，桥渡千年",
+    "author": "109学报",
+    "summary": "...与工学，被人为设置的学科隔离。虽然学界分别对三者进行了大量研究，成果数量众多，但鲜有人将它们置于同一研究视域之下，探讨三者精神内核的交融。《诗画桥》又将诗、画、桥的韵律、意境和意象重新融为一体。 《诗画桥》是杨雨教授继《物语诗心》之后在跨学科领域的又一力作。如果说《物语诗心》以古典诗词...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2025-11-23",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/tp5HB52IWJZAZ8q5d5gYxw",
+    "tags": [
+      "109学报",
+      "诗画桥"
+    ]
+  },
+  {
     "id": "visit-beijing-www-visitbeijing-com-cn-article-4ong6f1d2ye",
     "platform": "visit-beijing",
     "type": "article",
@@ -23,6 +60,24 @@
     "sourceUrl": "https://www.visitbeijing.com.cn/article/4OnG6f1D2ye"
   },
   {
+    "id": "wechat-search-诗话桥-2025-10-08-湖南民革-让古典诗词融入当代生活-人文学者杨雨的跨界探索",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "让古典诗词融入当代生活，人文学者杨雨的跨界探索",
+    "author": "湖南民革",
+    "summary": "...种学科。文学浪漫、高远的想象，其实为科技发展指引了方向；而科技的每一轮进步和发展，又在踏实回应着文学对于星空、对于远方的浪漫玄想。” 杨雨与诗话桥项目组在隆回朴塘桥进行田野调查。 杨雨与诗话桥项目组在宁乡惠同廊桥考察。 杨雨讲授诗话桥通识课。 拉长时空观察的焦距，展望文学与科技的每一次...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2025-10-08",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/tGqpTqFilH0tnGXxcXmAeg",
+    "tags": [
+      "湖南民革",
+      "诗话桥"
+    ]
+  },
+  {
     "id": "bilibili-www-bilibili-com-video-bv1gcprzye3n",
     "platform": "bilibili",
     "type": "video",
@@ -40,6 +95,24 @@
     "summarySource": "manual_verified",
     "capturedAt": "2026-06-11T17:26:49.400Z",
     "engagement": 0
+  },
+  {
+    "id": "wechat-search-诗画桥-2025-07-18-湖南教育出版社-央视读书精选-力荐-暑假来本-诗画桥-品古诗-赏古画-读古桥",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗画桥",
+    "title": "《央视读书精选》力荐，暑假来本《诗画桥》，品古诗，赏古画，读古桥",
+    "author": "湖南教育出版社",
+    "summary": "央视频荐书 《央视图书精选》榜单荐书《诗画桥》 以诗词为河， 丹青作舟， 开启中国古代桥梁文化的探索之旅 推荐书籍 《诗画桥》 作者： 杨雨 何旭辉 王嘉 出版社： 湖南教育出版社 图...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2025-07-18",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/dKUQLSwAt9eINALi-JPKLg",
+    "tags": [
+      "湖南教育出版社",
+      "诗画桥"
+    ]
   },
   {
     "id": "changsha-evening-news-www-icswb-com-h-100848-20250708-935478-html",
@@ -65,6 +138,60 @@
     "sourceUrl": "https://www.icswb.com/h/100848/20250708/935478.html"
   },
   {
+    "id": "wechat-search-诗话桥-2025-05-13-中南语推基地-穿越古桥千年历史-品读诗词万种风情-诗画桥-后记",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "穿越古桥千年历史，品读诗词万种风情——《诗画桥》后记",
+    "author": "中南语推基地",
+    "summary": "后记从 2020年6月11日“诗话桥”课题组正式成立，到今年《诗画桥》正式面世，近五年的时间过去了，我很开心",
+    "summarySource": "meta_description",
+    "publishedAt": "2025-05-13",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/qzUhsQXWrmhO8cp2D-4BCg",
+    "tags": [
+      "中南语推基地",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2025-05-12-中南语推基地-穿越古桥千年历史-品读诗词万种风情-诗画桥-序",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "穿越古桥千年历史，品读诗词万种风情——《诗画桥》序",
+    "author": "中南语推基地",
+    "summary": "盛唐不曾远去，少年仍会归来。 渭水上的桥会永远见证少年英雄对于盛世家国的守护！",
+    "summarySource": "meta_description",
+    "publishedAt": "2025-05-12",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/uHqiFfrwwpzsaRlLIiPdtw",
+    "tags": [
+      "中南语推基地",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-10859-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "“共守廊桥 涵养湘风”湖南省廊桥保护学术研讨会在长沙举办",
+    "author": "中南大学古桥研究中心",
+    "summary": "3月18日，“共守廊桥 涵养湘风”湖南省廊桥保护学术研讨会在长沙召开。本次会议由湖南省文物局指导，湖南省文物考古研究院主办，中南大学建筑与艺术学院、中南大学古桥研究中心协办，来自湖南省文史研究馆、湖南大学、长沙理工大学、湖南科技大学等多所高校、科研院所，以及安化县文物保护与考古研究中心、通道侗族自...",
+    "summarySource": "meta_description",
+    "publishedAt": "2025-03-26",
+    "capturedAt": "2026-06-14T05:01:31.594Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/10859.htm"
+  },
+  {
     "id": "hunan-cppcc-news-www-xiangshengnet-com-info-45436-html-cid-9",
     "platform": "hunan-cppcc-news",
     "type": "article",
@@ -86,19 +213,94 @@
     "sourceUrl": "https://www.xiangshengnet.com/info/45436.html?cid=9"
   },
   {
-    "id": "wechat-search-诗话桥-2023-07-18-九畹滋兰高校诗词园地-高工委2023年三-四月微刊-潇湘和诗话桥",
+    "id": "wechat-search-诗话桥-2025-03-17-湖南政协云-人文教育如何价值跃迁-从中南大学-诗话桥-看高校新文科建设",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "【高工委2023年三、四月微刊】潇湘和诗话桥",
-    "author": "九畹滋兰高校诗词园地",
-    "summary": "点击上方蓝字 ，关注 高校诗词园地 编者按 高工委2023年3、4月刊以“潇湘”和“诗话桥”同时为题。 题：“潇湘”。“自此别故群，独向潇湘渚”“潇湘水阔二妃愁”“湘水无情吊岂知”“不到潇湘岂有诗”“为谁流下潇湘去”“湘江北去，橘...",
+    "title": "人文教育如何价值跃迁？从中南大学“诗话桥”看高校新文科建设",
+    "author": "湖南政协云",
+    "summary": "...代背景下，作为一所以理工医为特色的综合性高校，中南大学在新文科建设方面独树一帜，成功实现了文理工课程的交叉融合，并取得丰硕成果。 3月底，《诗话桥》姊妹篇《诗画桥》即将面市。从“话”到“画”，《清明上河图》《千里江山图》等名画中的“桥”，从画中“走出来”与传统诗词产生“跨界融合”，这将...",
     "summarySource": "raw_excerpt",
-    "publishedAt": "2023-07-18",
-    "capturedAt": "2026-06-11T02:51:18.134Z",
+    "publishedAt": "2025-03-17",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=ZwSe1hu4JT*H9UFlvCtUp8*WlYoGXw7baPUOUTGNbSSd7qBQnSgqF-T08EjOGEqIxtKxx6Fx3nS8aLX46f5SOQPqxAcKXf8Wlwir2CNrXd1VHqkLqaQuwAZ1MbFrZN*3&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/y6LA5GfXzbWjdOEsKNnhMw",
+    "tags": [
+      "湖南政协云",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2024-09-25-央视科教-当诗歌遇到桥-会幻化出怎样的美丽与感动",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "当诗歌遇到桥——会幻化出怎样的美丽与感动",
+    "author": "央视科教",
+    "summary": "关注我们 设为星标 ⭐ 推荐阅读 👉 《央视2024中秋诗会》热播！西安师生：震撼、自豪、感动…… 👉 经常说这4句话的人，认知障碍倾向高于同龄人 总监制 | 杨继红 史 岩 监 制 | 田 龙 张 磊 王 珊 主 编 | 曲新志 万山红 蔡 瑛 编 辑 | 李 锋 潘开娜...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2024-09-25",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/eXVlPYnxl88PfwB9SuOYxg",
+    "tags": [
+      "央视科教",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2023-07-03-中南大学-王文博-守桥人-的青春之诗",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "王文博：“守桥人”的青春之诗",
+    "author": "中南大学",
+    "summary": "...的祖辈影响，刚结束高考的王文博毫不犹豫地选择了土木工程专业。2020年，热爱诗赋的王文博加入到土木院何旭辉教授与人文学院杨雨教授联合发起的“诗话桥”跨学科交叉研究课题，和同学们一起走访考察古桥，挖掘古桥文化。 二十一孔桥是王文博加入“诗话桥”团队后考察的第一座古桥。这座历史上为了方便防...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2023-07-03",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/PsHgd9BBwnkERgbTWlhfHA",
+    "tags": [
+      "中南大学",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2023-05-08-中大设计-中南大学-诗话桥-团队赴长沙县-梨街道考察调研",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学“诗话桥”团队赴长沙县㮾梨街道考察调研",
+    "author": "中大设计",
+    "summary": "点击蓝字 关注我们 5 月 3 日，中南大学“诗话桥”团队一行在团队创建人、省政协委员杨雨教授、何旭辉教授的带领下赴长沙县㮾梨街道进行古桥和古镇文化调研，调研团一行在我院党总支书记、董事长胡迎...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2023-05-08",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/2Rh5x278FfyduPxW9FdlHQ",
+    "tags": [
+      "中大设计",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "xingchen-news-app-changsha-cn-xctt-html-110187-20230506-145207-html",
+    "platform": "xingchen-news",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥 | 临湘山上陶公庙，梨江岸畔访古桥",
+    "author": "星辰在线",
+    "summary": "诗话桥 | 临湘山上陶公庙，梨江岸畔访古桥 您的位置： 星辰在线 > 星辰头条 > 星闻 星辰在线 >> 星辰头条 >> 星闻 --> 诗话桥 |...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2023-05-06",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://app.changsha.cn/xctt/html/110187/20230506/145207.html",
+    "tags": [
+      "星辰在线",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2023-04-13-漫话桥梁-桥梁好书-诗话桥-荣获2022年全国优秀科普作品",
@@ -107,28 +309,70 @@
     "keyword": "诗话桥",
     "title": "桥梁好书 |《诗话桥》荣获2022年全国优秀科普作品",
     "author": "漫话桥梁",
-    "summary": "在《诗话桥》一书中,中南大学古桥研究中心和中南大学中华经典吟唱研究与传播基地联合对现存古桥遗迹进行了实地查勘,真实还原...",
-    "summarySource": "meta_description",
+    "summary": "...古代文学经典中桥梁意象所蕴含的丰富情感、历史古桥从实体建筑通往诗化意象的嬗变轨迹等诸多方面，试图全面而立体地呈现桥梁之关与桥文化之美。 在《诗话桥》一书中，中南大学古桥研究中心和中南大学中华经典吟唱研究与传播基地联合对现存古桥遗迹进行了实地查勘，真实还原了古人“横木为梁”、“筑石为虹”...",
+    "summarySource": "raw_excerpt",
     "publishedAt": "2023-04-13",
-    "capturedAt": "2026-06-11T02:51:14.418Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=LKgQAWqi-sfuhIXccCzPng8tjtrP5XXA7cVy-9E3RKwa0Fs2uFopl99XV6XuFOm*YKkdaNACR0uDBVVgERkyMd9lcNI8ehB72Nt9SKTPuNDlnzBn564u42N1-uyL3Ac6&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/pGHj64ZX5cZyenhH4KC4Ng",
+    "tags": [
+      "漫话桥梁",
+      "诗话桥"
+    ]
   },
   {
-    "id": "wechat-search-诗话桥-2023-02-10-隆回公安-大美隆回-听听大家怎么说-宁静-在云中花瑶的美丽邂逅与深情相许-中南大学-诗话桥-团队考察隆回古桥",
+    "id": "wechat-search-诗话桥-2023-04-07-九畹滋兰高校诗词园地-高工委2023年三-四月微刊-潇湘和诗话桥",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "【大美隆回,听听大家怎么说】宁静:在云中花瑶的美丽邂逅与深情相许--中南大学“诗话桥”团队考察隆回古桥",
-    "author": "隆回公安",
-    "summary": "与花瑶的邂逅相逢是我们未曾想到的惊喜,却因为“诗话桥”古桥考察,让我们与这个伸手能碰到云雾的地方不期而遇. (隆回朴塘...",
-    "summarySource": "meta_description",
-    "publishedAt": "2023-02-10",
-    "capturedAt": "2026-06-11T02:51:18.885Z",
+    "title": "【高工委2023年三、四月微刊】潇湘和诗话桥",
+    "author": "九畹滋兰高校诗词园地",
+    "summary": "点击上方蓝字 ，关注 高校诗词园地 编者按 高工委2023年3、4月刊以“潇湘”和“诗话桥”同时为题。 题：“潇湘”。“自此别故群，独向潇湘渚”“潇湘水阔二妃愁”“湘水无情吊岂知”“不到潇湘岂有诗”“为谁流下潇湘去”“湘江北去，橘...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2023-04-07",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=lEQargBCThRtdGwKY8AnMR76Grx6A2YlC7Bc49wUpDlQnulNoMpG3Rb4ziFPJxX8beuqlBlIv4aQi88Uup2Ywe1R65tPvAl-Cc2tPeiy9HIILtrjn83CCfxaKcQg4ymX&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/s9HiRhxS1Lfo5CoHmhcP2Q",
+    "tags": [
+      "九畹滋兰高校诗词园地",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2023-02-12-文旅隆回-诗话桥丨石径通幽云路远-经年未改守桥心",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨石径通幽云路远，经年未改守桥心",
+    "author": "文旅隆回",
+    "summary": "石径通幽云路远，经年未改守桥心 ——中南大学“诗话桥”团队隆回古桥&文化考察系列之二 中南大学 守桥",
+    "summarySource": "meta_description",
+    "publishedAt": "2023-02-12",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/P0d47g5wUcsqawvnN2xXZg",
+    "tags": [
+      "文旅隆回",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2023-02-11-明月夜下守桥人-听守桥人说-no-15-宁静-在云中花瑶的美丽邂逅与深情相许",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "听守桥人说 NO.15 | 宁静：在云中花瑶的美丽邂逅与深情相许",
+    "author": "明月夜下守桥人",
+    "summary": "我相信总有一日我们会相逢，也总有一日我们会彼此牵挂。",
+    "summarySource": "meta_description",
+    "publishedAt": "2023-02-11",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/m_8ARoefKkJOhp9Gx6fIeg",
+    "tags": [
+      "明月夜下守桥人",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2023-02-09-文旅隆回-中南大学-诗话桥-考察团到隆回调研",
@@ -140,10 +384,13 @@
     "summary": "2月7日至8日，省政协委员、中南大学本科生院长、土木工程学院何旭辉教授，省政协委员、中南大学文学与新闻传播学院杨雨教授等一行到隆回县考察调研。",
     "summarySource": "meta_description",
     "publishedAt": "2023-02-09",
-    "capturedAt": "2026-06-11T02:51:22.091Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=OtBLS56YVvCe3mlOqwOHzxQmv7e46PFMrrStuN*OaoY9zjlaLkK*u5RPq1aEv7voxThzFywnuNkOWZ0uRfgTlC9JuGMk0LNjLUj7GG3Jifb3V8t-CrA-fFDUz*wopt9M&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/W2yDd-rDHJt871GampX8Ig",
+    "tags": [
+      "文旅隆回",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2023-02-04-中南大学出版社-重磅-诗话桥-获全国优秀科普作品奖",
@@ -152,43 +399,70 @@
     "keyword": "诗话桥",
     "title": "重磅 | 《诗话桥》获全国优秀科普作品奖",
     "author": "中南大学出版社",
-    "summary": "讯近日,科技部科技人才与科学普及司公布《2022年全国优秀科普作品公示名单》,我社出版图书《诗话桥》荣获“2022年全国优秀...",
-    "summarySource": "meta_description",
+    "summary": "喜 讯 近日，科技部科技人才与科学普及司公布《2022年全国优秀科普作品公示名单》， 我社出版图书 《诗话桥》 荣获“2022年全国优秀科普作品”，也是湖南省唯一获此殊荣的出版单位。 BOOK 《诗话桥》 ▲点击即可购买 ▲ 点击「编辑推荐」视频了...",
+    "summarySource": "raw_excerpt",
     "publishedAt": "2023-02-04",
-    "capturedAt": "2026-06-11T02:51:15.089Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=nObgWGvU-ySJ01BVCUPEHGN0MIVc5aI0y4rIjvw5e6tkTNdVlyFDWMxQh6t2xwnIqWxTToEx1R2uCj7euIkn4BSIJLDFJkR45Z371g4g0zA7fgKRYQpzPe5WBfdu7D-R&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/hhaTWTSKSMOJSWMdwLmXig",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2022-10-02-澧县在线文化-澧县籍院士张尧学-诗话桥-序",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "澧县籍院士张尧学|《诗话桥》序",
+    "title": "澧县籍院士张尧学｜《诗话桥》序",
     "author": "澧县在线文化",
     "summary": "序对于诗词和古桥，我知之甚少。但《诗话桥》这个美丽的名字，一见就给了我浪漫而美好的印象。巴别塔的梯子是通往天",
     "summarySource": "meta_description",
     "publishedAt": "2022-10-02",
-    "capturedAt": "2026-06-11T02:51:13.480Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=uPyVxK2g95pffPN9Dx1DxUf7MyJURZzH03liJYG2ODDi6xzvl0iSP-VFsLQjaI1vSci*JHgp-9RqHpxxrkQmacl-FJkk*qKS6RKPkaAxcKzuybnXiJl*H2q0RPml08ZX&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/V1I1MkUUjIL8aSz7J2mXJw",
+    "tags": [
+      "澧县在线文化",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2022-07-08-中南大学出版社-造吗-造啊-造最诗意的桥-点击查看你从未见过的课堂",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "造吗？造啊！造最诗意的桥……点击查看你从未见过的课堂",
+    "author": "中南大学出版社",
+    "summary": "自去年九月，中南大学开设 “诗话桥” 全校性 通识课后，校内反响十分热烈。目前，2022年春季学期的课程已经顺利结束。在本学期的学习中，“诗话桥”团队创新授课形式，以活泼欢乐...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2022-07-08",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/A4sicUrWJ5_KNY6tPEOupQ",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2022-07-05-csu吟唱君-漫步桥上-与诗意撞个满怀-诗话桥-2022年春季学期结课啦",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "漫步桥上,与诗意撞个满怀 --“诗话桥”2022年春季学期结课啦",
+    "title": "漫步桥上，与诗意撞个满怀 ——“诗话桥”2022年春季学期结课啦",
     "author": "CSU吟唱君",
     "summary": "漫步桥上，与诗意撞个满怀 ——“诗话桥”2022年春季学期结课啦！",
     "summarySource": "meta_description",
     "publishedAt": "2022-07-05",
-    "capturedAt": "2026-06-11T02:51:12.272Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=2kr23VoJkIZRkk64sGsmkBBPkSrI*-xQaUGs77lCoSbeLMuyW5N-18yvQfOil2JRjQ4fh76hsuwEKuan-FW4uWMWfxuMUj-s*AdmkTHPCu6A-odmIGXkMCDSe8lPcE6a&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/Xy8AwcQAWf_Wyhfc2cP71g",
+    "tags": [
+      "CSU吟唱君",
+      "诗话桥"
+    ]
   },
   {
     "id": "bilibili-www-bilibili-com-video-bv1xb4y1d7m3",
@@ -211,34 +485,40 @@
     "engagement": 0
   },
   {
+    "id": "wechat-search-诗话桥-2022-05-23-汨罗文旅广电局-罗水夹明镜-三拱落彩虹-岳阳女子桥考察纪实",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "罗水夹明镜，三拱落彩虹——岳阳女子桥考察纪实",
+    "author": "汨罗文旅广电局",
+    "summary": "行走在女子桥上，依然可以看到那些被旧时明月照耀过的生命和时光，可以体味到那些被潺潺罗水滋养过的人文与情怀，可以意会到那些被乡间茅草见证过的务实与振兴。",
+    "summarySource": "meta_description",
+    "publishedAt": "2022-05-23",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/VqjO2-quudbHCbdoxeO5uA",
+    "tags": [
+      "汨罗文旅广电局",
+      "诗话桥"
+    ]
+  },
+  {
     "id": "wechat-search-诗话桥-2022-05-19-汨江之语-诗话桥-罗水夹明镜-三拱落彩虹-汨罗女子桥考察纪实",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "诗话桥:罗水夹明镜,三拱落彩虹--汨罗女子桥考察纪实",
+    "title": "诗话桥：罗水夹明镜，三拱落彩虹——汨罗女子桥考察纪实",
     "author": "汨江之语",
     "summary": "关注汨罗，关爱家乡，一切尽在汨罗之声微信公众号。",
     "summarySource": "meta_description",
     "publishedAt": "2022-05-19",
-    "capturedAt": "2026-06-11T02:51:16.794Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=4EQwbfgTbLbjeYhZLKrhzjKrKC3WRbCMPh0qoUIFu1cAss-4cRSFHi-a*xRgJt4povli8-CwfgVbWS0VVUFz8VmI2MZ2bWEkky7g3wK6*3u3ftepErqiGhdze3Nm*Ya*&new=1"
-  },
-  {
-    "id": "wechat-search-诗话桥-2022-05-17-微汨罗-古桥古镇古祠印象深-中南大学诗话桥团队来汨调研",
-    "platform": "wechat-search",
-    "type": "article",
-    "keyword": "诗话桥",
-    "title": "古桥古镇古祠印象深 中南大学诗话桥团队来汨调研",
-    "author": "微汨罗",
-    "summary": "\"一霎落花风满袖，吟诗忽觉到桥边。\"古往今来，蕴藏着深远中华文化的诗与桥联系紧密，相交相融。在\"诗歌原乡\"汨",
-    "summarySource": "meta_description",
-    "publishedAt": "2022-05-17",
-    "capturedAt": "2026-06-11T02:51:21.296Z",
-    "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=uUh0gAmlhhC3zhxujQAmIGTJd23ZFd38Lk-yHyM0oRW54Oq8aIBiWxzfrQNrBOU4OVo4Bh1D5iDkxv*T0-9OQdPubh*Qx7mv2wUeRvIv43BK8D3KBpmQSGa4dE1bT4nu&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/VW1MwgnqfHfpyEi4dUUWlA",
+    "tags": [
+      "汨江之语",
+      "诗话桥"
+    ]
   },
   {
     "id": "yueyang-news-www-0730news-com-detail-infoid-115997",
@@ -263,19 +543,40 @@
     "sourceUrl": "https://www.0730news.com/detail?infoid=115997"
   },
   {
-    "id": "wechat-search-诗话桥-2022-05-16-汨江之语-古桥古镇古祠印象深中南大学诗话桥团队来汨调研",
+    "id": "wechat-search-诗话桥-2022-05-17-微汨罗-古桥古镇古祠印象深-中南大学诗话桥团队来汨调研",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "古桥古镇古祠印象深中南大学诗话桥团队来汨调研",
-    "author": "汨江之语",
-    "summary": "关注汨罗，关爱家乡，一切尽在汨罗之声微信公众号。",
+    "title": "古桥古镇古祠印象深 中南大学诗话桥团队来汨调研",
+    "author": "微汨罗",
+    "summary": "\"一霎落花风满袖，吟诗忽觉到桥边。\"古往今来，蕴藏着深远中华文化的诗与桥联系紧密，相交相融。在\"诗歌原乡\"汨",
+    "summarySource": "meta_description",
+    "publishedAt": "2022-05-17",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/_KorplC7CW8yWTzLvVzE_A",
+    "tags": [
+      "微汨罗",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2022-05-16-携诗远行-穿越古桥千年历史-品读诗词万种风情",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "穿越古桥千年历史 品读诗词万种风情",
+    "author": "携诗远行",
+    "summary": "从书名可知，《诗话桥》是一本有关“桥”与“诗”的图书。作者用娓娓道来的丽言美“话”，在读者与图书之间搭起了一座沟通的桥梁，使得“桥”与“诗”相互连接、互为鉴赏，真可谓“穿越古桥千年历史，品读诗词万种风情”，让人备受教益，悦目舒心。",
     "summarySource": "meta_description",
     "publishedAt": "2022-05-16",
-    "capturedAt": "2026-06-11T02:51:12.801Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=4EQwbfgTbLbjeYhZLKrhzjKrKC3WRbCMPh0qoUIFu1dZ*mL*-y68luQrnzA-aZOkIW3lmACk9lnDywudsDB7qF*ggIapsY1Yy8ZrzEtHQl4PiemjEqnAIrBFm4RM7f6G&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/qRgWfp27FFc_f0XR8HA1Sw",
+    "tags": [
+      "携诗远行",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2022-01-18-csu吟唱君-诗话桥-课程总结",
@@ -287,10 +588,67 @@
     "summary": "古桥中蕴含的诗意之美、文化之美正等待着我们进一步探索与发现。",
     "summarySource": "meta_description",
     "publishedAt": "2022-01-18",
-    "capturedAt": "2026-06-11T02:51:20.205Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=2kr23VoJkIZRkk64sGsmkBBPkSrI*-xQaUGs77lCoSYqLwZIYvzzdk8O6vzVaHNz92YIpluepyM-ooUBOvjZaicyS6A83jYajBA-NJZuXRgpnSsvgiROML-hMiniMPEV&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/MRWbswC3b37Zfx9JqIsVqA",
+    "tags": [
+      "CSU吟唱君",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-12-22-中南大学出版社-独立小桥风满袖-诗话桥-读者见面会",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "独立小桥风满袖 ——《诗话桥》读者见面会",
+    "author": "中南大学出版社",
+    "summary": "点击蓝字 关注我们 《诗话桥》读者见面会 12月19日晚，“麓山名家读书会”（第三期）—— “二十四桥仍在”《诗话桥》读者见面会 在岳麓区的止间书店成功举办。本场活动由...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2021-12-22",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/gHBJrHn4lzDPLv6EqlmJNw",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-12-14-中南大学出版社-活动招募-诗话桥-读者见面会邀您来参加",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "活动招募 | 《诗话桥》读者见面会邀您来参加！",
+    "author": "中南大学出版社",
+    "summary": "...联通，生活意趣的生发来源于桥梁的灵感，诗中有桥梁，桥上有风景；站在桥上看诗意风景，“把酒临风，其喜洋洋者矣”。 而今，这些诗意风景尽收于 《诗话桥》 中，这次就让我们一起品味古桥文学意蕴吧。 本周日晚上，麓山名家读书会第三期，中南大学土木工程学院何旭辉教授和文学与新闻传播学院杨雨教授携...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2021-12-14",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/uJWIcp7jfqet-h6kQyVhUQ",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-11-21-文小院-人在文新-黄瑾迟-一桥一诗探寻历史记忆-一步一印丈量文学意蕴",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "人在文新 | 黄瑾迟：一桥一诗探寻历史记忆，一步一印丈量文学意蕴",
+    "author": "文小院",
+    "summary": "“你站在桥上看风景，看风景的人在楼上看你。明月装饰了你的窗子，你装饰了别人的梦。”",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-11-21",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/BMsyFl-QRaisvn-eB8759w",
+    "tags": [
+      "文小院",
+      "诗话桥"
+    ]
   },
   {
     "id": "weibo-weibo-com-5657223885-kc6o5mnv7-refer-flag-1001030103",
@@ -310,19 +668,94 @@
     "sourceUrl": "https://weibo.com/5657223885/KC6o5mnV7?refer_flag=1001030103"
   },
   {
+    "id": "wechat-search-诗话桥-2021-09-17-中南大学教师教学发展中心-诗话桥-开讲啦",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "《诗话桥》开讲啦！",
+    "author": "中南大学教师教学发展中心",
+    "summary": "《诗话桥》 开 讲 啦 “青莎台上起书楼，绿藻潭中系钓舟。日晚爱行深竹里，月明多上小桥头。”（白居易《池上闲咏》） 一座座美丽的古桥不仅连接着两岸，...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2021-09-17",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/_KZOyBuFyjjMFcaBpdlMoQ",
+    "tags": [
+      "中南大学教师教学发展中心",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5261-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥 | 才下眉头，鹊上桥头",
+    "author": "中南大学古桥研究中心",
+    "summary": "从《古诗十九首》中的“迢迢牵牛星，皎皎河汉女”到秦观《鹊桥仙》中“柔情似水，佳期如梦，忍顾鹊桥归路”，从苏轼《虚飘飘》中的“银汉鹊成桥”到晏几道的“喜鹊桥成催凤驾”。随着牛郎织女神话故事的不断发展演绎，鹊桥这一相会方式想必大家都并不陌生。实际上，牛郎织女相会原本还有星桥、舟船等多种方式，但这些方式...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-08-13",
+    "capturedAt": "2026-06-14T05:01:31.660Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5261.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5260-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "丈量桥梁背后的美学意蕴，新书《诗话桥》济南书博会首发",
+    "author": "中南大学古桥研究中心",
+    "summary": "桥梁是人类聚居和社会交往的产物，与人类社会的发展紧密相关，也反映着不同时代的科学技术水平和民族文化特征。中南大学出版社主题活动：“讲述古桥前世今生，品读诗词万种风情”—《诗话桥》新书发布会，近日亮相第 30 届全国图书交易博览会，带领读者探索深藏于桥梁背后的艺术审美和文化传承。湖南省委宣传部部务会...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-07-20",
+    "capturedAt": "2026-06-14T05:01:31.735Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5260.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5259-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "讲述古桥前世今生，品读诗词万种风情",
+    "author": "中南大学古桥研究中心",
+    "summary": "《诗话桥》首发会2021年7月16日 ★ 山东2021年7月16日，上午11点，在山东国际会展中心5号馆E-07湖南展团中心活动区，中南大学出版社第30届全国图书交易博览会主题活动：“讲述古桥前世今生，品读诗词万种风情”—《诗话桥》新书首发成功举办。湖南省委宣传部部务会成员、湖南省人民政府新闻办公...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-07-17",
+    "capturedAt": "2026-06-14T05:01:31.836Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5259.htm"
+  },
+  {
     "id": "wechat-search-诗话桥-2021-07-15-csu吟唱君-何旭辉-吟诗忽觉到桥边-诗话桥-编者序",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "何旭辉|吟诗忽觉到桥边--《诗话桥·编者序》",
+    "title": "何旭辉｜吟诗忽觉到桥边——《诗话桥·编者序》",
     "author": "CSU吟唱君",
     "summary": "美丽的古桥，不只是停留在历史的烟尘中，更在今日的盛世中继续展现着“她们”的绝代芳华。",
     "summarySource": "meta_description",
     "publishedAt": "2021-07-15",
-    "capturedAt": "2026-06-11T02:51:11.548Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=2kr23VoJkIZRkk64sGsmkBBPkSrI*-xQaUGs77lCoSaOJiUpLy*BDWNFrH2rvuKru2E2XDbsG8bhLDXZkPWTlLeSrWPK2Eli1UGipwVkDBVxLE2xaCAX-Uectxm*gvoF&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/Yc5wabwJDQh-18DAkBl2Sg",
+    "tags": [
+      "CSU吟唱君",
+      "诗话桥"
+    ]
   },
   {
     "id": "wechat-search-诗话桥-2021-07-15-csu吟唱君-诗话桥-前言",
@@ -334,10 +767,67 @@
     "summary": "...族的奋争历史和破茧成蝶的完美绽放时刻。因此，我们愿意将桥梁“新”与“旧”的界限，确立在新中国诞生这一伟大历史意义的时间节点上。 其次，何谓“诗话桥梁”？顾名思义，“诗话桥梁”应是用诗意的语言来勾勒桥梁历史、阐释桥梁文化，而非仅仅从材料结构、建筑工艺等层面来介绍不同类型桥梁的技术特点，故...",
     "summarySource": "raw_excerpt",
     "publishedAt": "2021-07-15",
-    "capturedAt": "2026-06-11T02:51:19.556Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=2kr23VoJkIZRkk64sGsmkBBPkSrI*-xQaUGs77lCoSZcOnx8HDBfL33u*VegZkMyefdHvzVDlcSwwWAWtaIahfx9kXLg8lR1*qKY0eEKJisE03ECjD2hkWqNKNJEwsNE&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/DIf72rnAY7xByiMXdy5aUg",
+    "tags": [
+      "CSU吟唱君",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-06-18-中南大学教师教学发展中心-督导观察-诗话桥梁-桥美-和-诗美-的结合",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "督导观察 | 诗话桥梁——“桥美”和“诗美”的结合",
+    "author": "中南大学教师教学发展中心",
+    "summary": "土木工程学院于2021年6月16日召开了“课程思政建设研究项目”专题研讨交流会。",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-06-18",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/hpAOgOKK_n3a-ZR6wq5Enw",
+    "tags": [
+      "中南大学教师教学发展中心",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-05-18-中南大学土木工程学院-诗话桥-开启文工学科交叉课程思政新篇章",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "“诗话桥”开启文工学科交叉课程思政新篇章",
+    "author": "中南大学土木工程学院",
+    "summary": "5月16日上午，由中南大学土木工程学院和文学与新闻传播学院主办，中南大学古桥研究中心和中南大学中华经典吟唱研究与传播基地承办的“诗话桥”诗词、书法比赛颁奖典礼暨吟唱基地八周年生日会在中南大学毓秀楼举行。中国工程院院士何继善，中南大学副校长陈春阳，党委宣传部常务副部长胡杨，校...",
+    "summarySource": "raw_excerpt",
+    "publishedAt": "2021-05-18",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/93asQUcyZ7-tYke5FtNgzw",
+    "tags": [
+      "中南大学土木工程学院",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5258-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "“诗话桥”开启文工学科交叉课程思政新篇章",
+    "author": "中南大学古桥研究中心",
+    "summary": "5月16日上午，由中南大学土木工程学院和文学与新闻传播学院主办，中南大学古桥研究中心和中南大学中华经典吟唱研究与传播基地承办的“诗话桥”诗词、书法比赛颁奖典礼暨吟唱基地八周年生日会在中南大学毓秀楼举行。中国工程院院士何继善，中南大学副校长陈春阳，党委宣传部常务副部长胡杨，校团委书记刘正宗以及其他相...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-05-18",
+    "capturedAt": "2026-06-14T05:01:31.911Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5258.htm"
   },
   {
     "id": "weibo-s-weibo-com-weibo-q-23-e4-b8-ad-e5-8d-97-e5-a4-a7-e5-ad-a6-e5-90-9f-e5-94-b1-e5-9f-ba-e5-9c-b0-e5-85-ab-e5-91-a8-e5-b9-b4-23",
@@ -358,34 +848,238 @@
     "sourceUrl": "https://s.weibo.com/weibo?q=%23%E4%B8%AD%E5%8D%97%E5%A4%A7%E5%AD%A6%E5%90%9F%E5%94%B1%E5%9F%BA%E5%9C%B0%E5%85%AB%E5%91%A8%E5%B9%B4%23"
   },
   {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5257-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学风工程研究团队科技问诊思南香坝镇铁索桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "5月3日下午2时许，贵州省铜仁市思南县香坝镇遭遇暴风雨，狂风持续了约半小时，牛角岩附近的两座铁索桥在狂风中“荡秋千”，上下翻飞，剧烈摆动。这次大风导致两座桥受损，一号桥两侧栏杆损坏，桥面出现不同程度受损，二号桥单侧主缆断裂内卷，桥面严重倾斜。为了安全起见，两座桥都被封闭待修，禁止人车通行。铁索桥位...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-05-13",
+    "capturedAt": "2026-06-14T05:01:31.981Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5257.htm"
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-03-16-中南大学出版社-诗话桥丨杨雨-州桥南北是天街-范成大与州桥",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨杨雨：州桥南北是天街——范成大与州桥",
+    "author": "中南大学出版社",
+    "summary": "言短意长，声声泣泪。与我们一起在杨雨老师的文字中，感受天汉州桥所承载的拳拳爱国情吧~",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-03-16",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/NZRDG2BvLpAil1WWJvjCxg",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5256-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗画桥",
+    "title": "杨雨：州桥南北是天街——范成大与州桥",
+    "author": "杨雨",
+    "summary": "州桥，位于今天河南开封市内，又名天汉桥，修建于唐代建中二年(781年)，为当时宣武军节度使李勉重修汴州城时所建，名为汴州桥，简称州桥。北宋以汴州(开封)为国都，州桥是当时横跨汴河之上的十三座桥中最雄伟壮观的一座，它不仅是北宋繁荣之光的组成部分，而且也见证了“靖康之耻”的历史伤痛。后代诗人每登临此处...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-03-11",
+    "capturedAt": "2026-06-14T05:01:32.045Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5256.htm"
+  },
+  {
     "id": "wechat-search-诗话桥-2021-03-02-中南大学出版社-诗话桥丨民生忧乐总关情-岳阳三眼桥考察纪实",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "诗话桥丨民生忧乐总关情--岳阳三眼桥考察纪实",
+    "title": "诗话桥丨民生忧乐总关情——岳阳三眼桥考察纪实",
     "author": "中南大学出版社",
     "summary": "经历风雨，跨越沧桑，让我们一起细细品味，诗话桥梁~桥梁专家何旭辉教授和百家讲堂杨雨教授联手打造2021年度学科融合科普大作。",
     "summarySource": "meta_description",
     "publishedAt": "2021-03-02",
-    "capturedAt": "2026-06-11T02:51:17.444Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=nObgWGvU-ySJ01BVCUPEHGN0MIVc5aI0y4rIjvw5e6tap5nZpPjYQcbr41pDkk4eAC*jsEOz-5YvW2b4*04Ei6jSCGf2KPah8JyggW4QvelQLfuFbUkNAzSS7dcduM4Z&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/yzzP4cL65pD2mgZvooX5pQ",
+    "tags": [
+      "中南大学出版社",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5255-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨黄瑾迟：民生忧乐总关情——岳阳三眼桥考察纪实",
+    "author": "黄瑾迟",
+    "summary": "“南湖秋水夜无烟，耐可乘流直上天。且就洞庭赊月色，将船买酒白云边。”(李白《陪族叔刑部侍郎晔及中书贾舍人至游洞庭五首·其二》)千年前的谪仙人李白曾在岳阳南湖流连忘返，南湖的秋夜澄澈如画，水天相接，八百里洞庭俨然一位富有的主人，湖光山色都被他拥入怀中，这位主人也毫不吝惜，慷慨地将月色借与游人，正如李...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-02-21",
+    "capturedAt": "2026-06-14T05:01:32.115Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5255.htm"
+  },
+  {
+    "id": "wechat-search-诗话桥-2021-02-19-岳阳市南湖新区-中南大学-诗话桥梁-项目组来我区考察",
+    "platform": "wechat-search",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学“诗话桥梁”项目组来我区考察",
+    "author": "岳阳市南湖新区",
+    "summary": "2月19日，中南大学文学与新闻传播学院党委书记罗军飞，中南大学土木工程学院院长何旭辉，中南大学文学与新闻传播学院教授杨雨率中南大学“诗话桥梁”项目组来我区考察。",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-02-19",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
+    "engagement": 0,
+    "sourceUrl": "https://mp.weixin.qq.com/s/Y7z0n3_6kasnmm6SAvWLmw",
+    "tags": [
+      "岳阳市南湖新区",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5254-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨唐苗：醉乡广大人间小——秦观与海棠桥",
+    "author": "唐苗",
+    "summary": "宋神宗熙宁七年(1074年)，苏轼从杭州前往密州途中，经过扬州的一座寺庙，忽然看到寺庙墙上“自己”的字迹，大吃一惊：墙上是我的字吗?我没来过这里啊，我是谁?我在哪儿?什么情况?满腹疑惑的苏轼，到高邮拜访孙觉。孙觉与苏轼相谈甚欢，并拿出了一本小册子——上百篇诗词作品，苏轼读罢这百篇诗词，立即想到扬州...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-02-09",
+    "capturedAt": "2026-06-14T05:01:32.196Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5254.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5253-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨唐苗：从“年丰民乐”到伟大转折 ——遵义丰乐桥的红色基因",
+    "author": "唐苗",
+    "summary": "公元1934年10月，中央苏区红军第五次反“围剿”失败，红军主力被迫实行战略转移，踏上了二万五千里的长征路。在经历了湘江战役的失败之后，毛泽东同志仔细分析了当时的军事态势，提出改变行军路线，向国民党统治力量相对薄弱的贵州地区进军，以便尽快摆脱国民党的追兵。同年12月15日，中央红军占领了贵州黎平县...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-02-09",
+    "capturedAt": "2026-06-14T05:01:32.270Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5253.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5252-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥丨杜培功：此日驱车马迹桥——中南大学“诗话桥梁”考察组赴衡山调研",
+    "author": "杜培功",
+    "summary": "“桥是凝固的建筑，赋予它生命的，是人;赋予它灵魂的，是文。”2021年1月29日，久不见晴的长沙，在知晓中南大学“诗话桥梁”项目组即日启程南岳衡山考察古桥后，也初显冬日暖阳的模样。而在854年前的朱熹、张栻登山时，适逢十一月，雨雪纷飞。张栻在《游南岳酬唱序》中写道：“丙子，小憇，甚雨”。“日下照林...",
+    "summarySource": "meta_description",
+    "publishedAt": "2021-02-01",
+    "capturedAt": "2026-06-14T05:01:32.332Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5252.htm"
   },
   {
     "id": "wechat-search-诗话桥-2021-01-27-中南大学土木工程学院-一霎落花风满袖-吟诗忽觉到桥边-诗话桥梁-征稿启事",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "一霎落花风满袖,吟诗忽觉到桥边--“诗话桥梁”征稿启事",
+    "title": "一霎落花风满袖，吟诗忽觉到桥边——“诗话桥梁”征稿启事",
     "author": "中南大学土木工程学院",
     "summary": "...可能与必要性，作为建筑艺术与经典文学之间有机联系载体的桥梁成为 中南大学土木工程学院与中南大学文学与新闻传播学院 跨学科交叉研究的主题。 “诗话桥梁”课题 意图以古桥与古诗词为突破点，从中体味古桥中的诗意，探寻诗境中的古桥，进而传承与发扬我国经典桥梁文化，同时为古桥的保护与修复献出绵薄...",
     "summarySource": "raw_excerpt",
     "publishedAt": "2021-01-27",
-    "capturedAt": "2026-06-11T02:51:26.094Z",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=PHYQCHohrRZNEAh1LAL0QPmkrZ8d8dpNLL5Dp-rCZfjEY0N0dtNT5zC8dSIXl-OhyJoqpEsGVyuo7sIb6UAnxbmaaOlH7feCj5jvN3*hGw7qDNpGsqAJYRCEOvKfYNSf&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/VYXoIlBkwsHmFzz6IPQDPw",
+    "tags": [
+      "中南大学土木工程学院",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5251-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "古道长虹———安化茶马古道上的风雨桥群",
+    "author": "中南大学古桥研究中心",
+    "summary": "近日，在何旭辉教授的带领下中南大学古桥研究中心取得了重要成果，在《中国古桥学》电子期刊上发表论文一篇",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-11-23",
+    "capturedAt": "2026-06-14T05:01:32.399Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5251.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5250-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学古桥研究中心何旭辉教授荣获2020年湖南“最美科技工作者”称号",
+    "author": "中南大学古桥研究中心",
+    "summary": "本网讯 日前，中共湖南省委宣传部、湖南省科学技术协会、湖南省科学技术厅联合发布了《关于授予冯江华等10名同志2020年湖南“最美科技工作者”称号的决定》，中南大学古桥研究中心何旭辉教授荣获2020湖南“最美科技工作者”称号。何旭辉教授（左一）主要研究方向为桥梁/结构风工程、风-车-桥耦合振动、桥梁...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-10-19",
+    "capturedAt": "2026-06-14T05:01:32.465Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5250.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5249-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学古桥研究中心何旭辉教授和罗军飞教授分别获批湖南省普通高等学校课程思政建设研究项目立项",
+    "author": "中南大学古桥研究中心",
+    "summary": "中南大学古桥研究中心何旭辉教授和罗军飞教授分别获批湖南省普通高等学校课程思政建设研究项目立项。何旭辉教授主持项目为《传承中国古桥与古建筑文化，推进土木工程课程思政建设》，参与人员包括研究中心的敬海泉，杨雨，蒋琦玮，蔡陈之，魏晓军，周铁明，纪晓飞；罗军飞教授主持项目为《新文科建设背景下课程思政推进路...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-10-11",
+    "capturedAt": "2026-06-14T05:01:32.541Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5249.htm"
   },
   {
     "id": "csu-bridge-center-civil-csu-edu-cn-info-1622-5230-htm",
@@ -397,7 +1091,7 @@
     "summary": "你可知被誉为“南方卢沟桥”的古桥是哪座?你可知桥也能由糯米糁和石灰接砌而成?你可知此桥的最初建立传闻与一只千年麻拐(瑶族方言，即青蛙)有关?它就是位于江华瑶乡沱江之上的西佛桥。(西佛桥远景，作者供图)(中南大学古桥研究中心 何旭辉教授介绍西佛桥与卢沟桥异同)对于西佛桥的初印象来自于它与千年麻拐的有...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.352Z",
+    "capturedAt": "2026-06-14T05:01:29.832Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -415,7 +1109,7 @@
     "summary": "在壁画墓中室西壁, 进入后室的币道券门顶上, 绘出了一幅榜题为“ 七女为父报仇”的画面。木柱朱栏之下很明显地标出了“渭水桥” 三字。是知此画为借渭水桥这一古代有名的长桥来表现“ 七女为父报仇” 的主题。在桥上正中车骑之间还有“长安令” 三字, 更进一步明确地肯定了这座桥是汉长安的渭水桥。这个“ 七...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.414Z",
+    "capturedAt": "2026-06-14T05:01:29.898Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -433,7 +1127,7 @@
     "summary": "（纪晓飞，拍摄于2020年7月15日）(黄瑾迟，拍摄于2020年7月15日)(黄瑾迟，拍摄于2020年7月15日)步瀛桥位于上甘棠村西南的谢沐河上，是上甘棠村的主要出入口，筑于北宋靖康(1126)年。全桥三拱，采用半圆形薄拱，属于上承式实腹式拱桥。桥面及上桥台阶均为青石板，桥梁横断面为板拱，矩形截...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.471Z",
+    "capturedAt": "2026-06-14T05:01:29.966Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -451,7 +1145,7 @@
     "summary": "（敬海泉，拍摄于2020年7月14日）（黄瑾迟，拍摄于2020年7月14日）皋陶桥，位于湖南道县乐福堂乡大莲塘村，历史上地处湘桂古道上，修建于宋嘉定年间(1208—1224年)，是道县目前发现有文字记载最早的石拱桥，桥西岸建有凉亭一处，内有清代重修桥亭碑记。全桥两拱，属于上承式实腹式拱桥，桥面及上...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.528Z",
+    "capturedAt": "2026-06-14T05:01:30.047Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -469,7 +1163,7 @@
     "summary": "龙门桥为三孔石拱桥，位于江华瑶族自治县沱江镇上宅洞村，属于上承式实腹式拱桥，始建年代不详。现桥面及上桥台阶均被现代水泥路覆盖，可通行车辆。桥梁横断面为板拱，矩形截面，板拱宽度约为拱圈宽度，纵断面为三个近半圆截面，拱轴线近似圆弧线，包括一个主拱和两个副拱。桥面宽度5.6m，栏杆宽度0.3m。主拱净跨...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.586Z",
+    "capturedAt": "2026-06-14T05:01:30.119Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -487,7 +1181,7 @@
     "summary": "安乐桥建于清光绪戊戌年(1898)，位于江华桥头镇下蒋村，历史上这座桥是属于湘桂古道的一部分，安乐桥旁边有同善亭，还有一棵古樟树，树龄约有500年，据当地村民描述，此处也是古代贩盐贩菜的商人休息的地方。村民为了保护古桥，目前桥旁边新建了一小平桥通车，古桥仍可供行人走路。桥为单孔石拱桥，属于上承式实...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.644Z",
+    "capturedAt": "2026-06-14T05:01:30.194Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -505,7 +1199,7 @@
     "summary": "桥作为一种沟通外部世界的建筑，在一定程度上消解了水域、地域对人类活动的限制。人类通过桥梁走向彼岸，彼岸世界全新的打开方式，又让桥梁走进了人类的精神世界，成为文学创作中的重要意象。中国古典诗词里从来不乏有关桥的意象，这些桥可能是真实存在过的桥梁，例如灞桥、断桥、朱雀桥、二十四桥等等，也有神话故事、民...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.700Z",
+    "capturedAt": "2026-06-14T05:01:30.296Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -523,7 +1217,7 @@
     "summary": "武汉长江大桥建筑方案，是由中铁大桥局桥梁设计专家唐寰澄(已故)所设计，20世纪50年代，在武汉长江大桥建筑设计方案征集活动中，周恩来总理亲自批准“唐寰澄方案”为首选，时年唐寰澄先生年仅28岁，且武汉长江大桥是唐先生的“处女作”。其特点是，满足功能和美学原理(实用、经济、美观)，体现最经济和最民族风...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.755Z",
+    "capturedAt": "2026-06-14T05:01:30.383Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -541,7 +1235,7 @@
     "summary": "我们常会听到有人说这么一句话：“一生一代一双人。”其实这句如此浪漫的爱情名言，出自骆宾王的《代女道士王灵妃赠道士李荣》，不过我们更熟悉的还是清代词人纳兰性德化用了骆诗的这首《画堂春》：画堂春一生一代一双人。争教两处销魂。相思相望不相亲。天为谁春。(《一生一代一双人》，DJW绘)浆向蓝桥易乞，药成碧...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.817Z",
+    "capturedAt": "2026-06-14T05:01:30.476Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -559,7 +1253,7 @@
     "summary": "从《古诗十九首》中的“迢迢牵牛星，皎皎河汉女”到秦观《鹊桥仙》中“柔情似水，佳期如梦，忍顾鹊桥归路”，从苏轼《虚飘飘》中的“银汉鹊成桥”到晏几道的“喜鹊桥成催凤驾”。随着牛郎织女神话故事的不断发展演绎，鹊桥这一相会方式想必大家都并不陌生。实际上，牛郎织女相会原本还有星桥、舟船等多种方式，但这些方式...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.883Z",
+    "capturedAt": "2026-06-14T05:01:30.545Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -573,11 +1267,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥 | 姜夔：走不出的赤阑",
-    "author": "中南大学古桥研究中心",
+    "author": "姜夔",
     "summary": "赤阑桥，位于合肥城南，是当地重要的文化标记。2002年时，合肥市政府在桐城路原合肥师范附小门口立下了刻有“赤阑桥”的石碑，标志着这一遗迹，现今赤阑桥景多的被认作是原桐城路桥，而原址则似是已经湮灭在了历史长河之中。可尽管已经不存，但在文人的笔下，桥相比于渡人的现实功用，更像是历史的活化石，流转在时光...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:50.946Z",
+    "capturedAt": "2026-06-14T05:01:30.611Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -595,7 +1289,7 @@
     "summary": "在中国现存最早的皇家祭祀园林晋祠博物馆的宣传网站上，有这样一句宣传语“三晋之胜，以晋阳为最;而晋阳之胜，全在晋祠。”五千年历史看山西，三晋大地历史绵延，文物丰富，为何晋祠能独占此誉?因为它是晋王祠?因为它拥有晋祠三绝吗?我想，是这样，但远不仅是这样。诚然，晋祠是中国现存最早的皇家祭祀园林，晋国宗祠...",
     "summarySource": "meta_description",
     "publishedAt": "2020-09-15",
-    "capturedAt": "2026-06-11T17:26:51.009Z",
+    "capturedAt": "2026-06-14T05:01:30.682Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -604,31 +1298,16 @@
     "sourceUrl": "https://civil.csu.edu.cn/info/1622/5231.htm"
   },
   {
-    "id": "wechat-search-诗话桥-2020-08-10-中南大学土木工程学院-中南桥话-诗话桥梁访安化-几多风雨几多情",
-    "platform": "wechat-search",
-    "type": "article",
-    "keyword": "诗话桥",
-    "title": "中南桥话|诗话桥梁访安化,几多风雨几多情",
-    "author": "中南大学土木工程学院",
-    "summary": "8月6日-8日，由 中南大学古桥研究中心 和 中南大学中华经典吟唱与传播基地 共同发起的中南大学 “诗话桥梁”党员博士服务团 来到益阳市安化县寻访考察安化风雨桥。此次社会实践活动由中南大学土木工程学院院长何旭辉带队，组织了包括长沙学院、土木工程学...",
-    "summarySource": "raw_excerpt",
-    "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T02:51:24.379Z",
-    "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=PHYQCHohrRZNEAh1LAL0QPmkrZ8d8dpNLL5Dp-rCZfhM3kUDcPG0nIIDX2HARods*gHi3aa2IJtDIbaPky-fNMFOX3UtDS89dGaqB82oRwBjV0Iad7-02wFRMFhA9q9y&new=1"
-  },
-  {
     "id": "csu-bridge-center-civil-csu-edu-cn-info-1622-5229-htm",
     "platform": "csu-bridge-center",
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨黄瑾迟：乐仙桥记",
-    "author": "中南大学古桥研究中心",
+    "author": "黄瑾迟",
     "summary": "疏雨幽亭骚人有曲惊司马;亭环景岫旅客无心道沛公。乐仙桥与仙乐亭相连，亭内的这幅对联首先吸引了我的目光。在江华，许多古桥的桥头都设有这样的亭子，这不禁让我觉得好奇，询问同行的桥梁专家，他们解释说或为行人提供歇脚之处。庾信在《哀江南赋》中道：“十里五里，长亭短亭。”古时城外十里设置一长亭，五里设置一短...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.071Z",
+    "capturedAt": "2026-06-14T05:01:30.754Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -642,11 +1321,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨杨雄心：漫步十里桥",
-    "author": "中南大学古桥研究中心",
+    "author": "杨雄心",
     "summary": "漫步十里桥，要出古道州城西门，走周家坊，过阳乐田，穿鸟梨树。清光绪三年《道州志》记载：“十里桥州西十里，入广西灌阳路，明洪武间僧居敬募建……”。沿省道323线向西行不远处有一座现代桥梁，现在人们都理所当然地认为这就是十里桥。实际上，真正的十里桥在这条公路的南面、河流上游约两公里处。桥东为富塘乡鸟梨...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.136Z",
+    "capturedAt": "2026-06-14T05:01:30.834Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -660,11 +1339,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨杨雄心：无语风雨桥",
-    "author": "中南大学古桥研究中心",
+    "author": "杨雄心",
     "summary": "在历史上，对于拥有众多大小河流的古道县来说，造桥是十分必要的。没有桥，路就走不通。修桥是好事，也是难事，更非易事，是修一座木梁桥?还是修一座厚实的石梁桥呢?当年午田村捐资造桥的古人经过深思熟虑，决定修一座拱券高高的石拱桥，他们想到路过此桥的可能会有奔波的旅人，于是他们又在桥上搭上梁架，盖上小青瓦，...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.194Z",
+    "capturedAt": "2026-06-14T05:01:30.932Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -678,11 +1357,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨张群芳：灞桥风雪在，似是故人来",
-    "author": "中南大学古桥研究中心",
+    "author": "张群芳",
     "summary": "在中国古典诗词中，“灞桥”因其独特的地理位置和别具意味的文化内涵被历代文人雅士所吟咏，成为中国文学的经典意象之一。作为长安东部的门户，灞桥是古人进出长安的交通要道，也是函关、武关、蒲关的必经之路。古往今来，无数的文人墨客从桥上走过，留下了浩如烟海的金句篇章，他们或是哀叹“灞陵伤别”;或是骑驴“觅句...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.260Z",
+    "capturedAt": "2026-06-14T05:01:31.010Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -696,11 +1375,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨王文博：二十一孔桥——黄土高原孕育的别样风采",
-    "author": "中南大学古桥研究中心",
+    "author": "王文博",
     "summary": "都说五千年历史看山西，都说黄土高原人厚实，都说，都说，又怎么能说得尽我家乡的钟灵毓秀?不同于江南水乡的温文尔雅，清新幽静，家乡用他厚实的土壤孕育生灵，以别样的方式呈现着文化的魅力。而一座座年代久远的古桥，正是这方水土积淀的文化在时空上留下的痕迹。以前呢，总是听见爷爷提起他们以前的故事，说起过年走亲...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.328Z",
+    "capturedAt": "2026-06-14T05:01:31.080Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -714,11 +1393,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥 | 杨雨：旅法日记之阿维尼翁教皇宫及阿维尼翁断桥",
-    "author": "中南大学古桥研究中心",
+    "author": "杨雨",
     "summary": "第一次听到阿维尼翁的名字，是因为有名的“阿维尼翁之囚”事件，今日之游最重要的目的地就是阿维尼翁，阿维尼翁最重要的标志就是教皇宫(le Palais des Papes)。兴建于14世纪的教皇宫主要是两位教皇Benoit十二世(Benoit XII)和克莱芒六世(Clement VI)的作品。14世...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.385Z",
+    "capturedAt": "2026-06-14T05:01:31.165Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -732,11 +1411,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥 |李秋颐：苗寨祭桥节——神秘的传统民俗，你get到了吗？",
-    "author": "中南大学古桥研究中心",
+    "author": "李秋颐",
     "summary": "在中国文化发展的历史进程中，“桥”这一意象承载着深厚的文化内涵，而在苗族百姓口耳相传的神话故事中，“桥”被视为具有生命力的神物并被加以祭拜。“二月二，龙抬头”，对于黔东南地区的苗族百姓来说，农历二月二的祭桥节是他们的民族传统节日。谷陇镇是苗族风俗保存较为完好的一个镇子,村寨众多。在农历二月二这天，...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.443Z",
+    "capturedAt": "2026-06-14T05:01:31.227Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -750,11 +1429,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥 | 黄瑾迟：诗话桥梁——土木院与文新院开展跨学科交叉研究",
-    "author": "中南大学古桥研究中心",
+    "author": "黄瑾迟",
     "summary": "桥梁意象在我国古代文学中源远流长，早在先秦的文献中就可以见到有关“桥”、“梁”的记载，“文定厥祥，亲迎于渭。造舟为梁，不显其光。(《诗经·大明》)”在这里，“梁”作为具有实际意义的指向存在。“有狐绥绥，在彼淇梁。心之忧矣，之子无裳。(《诗经·有狐》)”此中的“桥”不仅实指桥梁，而且位于诗首的景物渲...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.503Z",
+    "capturedAt": "2026-06-14T05:01:31.304Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -768,11 +1447,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥 | 张再兴：“桥”字杂谭",
-    "author": "中南大学古桥研究中心",
+    "author": "张再兴",
     "summary": "桥梁之用，“以通往来”为要。河之广狭、深浅不同，通往来之方式亦即多样。“就其深矣，方之舟之。就其浅矣，泳之游之。”(《诗经·邶风·谷风》)“方”是并排的二舟。宽广之河需借舟楫，稍浅则粗暴地游过去了。“泳”字本义是“潜行水中”，而我们现在讲的潜水的“潜”字本义则是“涉水”，两个字后世常用的意思正好与...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.569Z",
+    "capturedAt": "2026-06-14T05:01:31.376Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -786,11 +1465,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨李秋颐：桥下有剑斩蛟龙",
-    "author": "中南大学古桥研究中心",
+    "author": "李秋颐",
     "summary": "（视频。通讯员 路程乾 提供）（通讯员 路程乾 供图） 近日南方多省迎来连续大范围强降雨天气，多地汛情形势严峻。今年7月7日，建于明代的安徽黄山镇海桥被洪水冲毁了，这座桥渡人过河数百年之久，它注视着桥上日复一日的过往行人，也默默承载着桥下江水汹涌的冲击力，而如今还是被洪流带走了。除镇海桥之外，江西...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.632Z",
+    "capturedAt": "2026-06-14T05:01:31.445Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -804,11 +1483,11 @@
     "type": "article",
     "keyword": "诗话桥",
     "title": "诗话桥丨黄瑾迟：响桥不响人想桥",
-    "author": "中南大学古桥研究中心",
+    "author": "黄瑾迟",
     "summary": "响桥?想桥? 初听名字，我以为是思念之义的“想桥”，在吃力地理解老乡的瑶族方言之后，才知是声音之“响桥”。老乡接着信誓旦旦地说:“不知道响桥就不是源田塘村人!”可见响桥在他们心中的分量之重。顾名思义，响桥，走在桥面即会听到响声。或是木桥?或是竹桥?在我的认知中，似乎只有这两种材质符合响的标准。(田...",
     "summarySource": "meta_description",
     "publishedAt": "2020-08-10",
-    "capturedAt": "2026-06-11T17:26:51.698Z",
+    "capturedAt": "2026-06-14T05:01:31.522Z",
     "engagement": 0,
     "tags": [
       "中南大学古桥研究中心",
@@ -817,18 +1496,291 @@
     "sourceUrl": "https://civil.csu.edu.cn/info/1622/5219.htm"
   },
   {
-    "id": "wechat-search-诗话桥-2020-06-11-文小院-诗话桥梁-土木院与文新院开展跨学科交叉研究",
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5248-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "“桥”字杂谭 | 你敢说你认识“桥”字？",
+    "author": "中南大学古桥研究中心",
+    "summary": "“度娘度娘，我要找桥！”度娘说：“桥者，水梁也，渡水之用，以通往来。你去水上找。”“哦哦哦。你叫桥吗？”“非也非也，我叫矼。”“那你叫桥咯。”“非也非也，我叫徛。”“你总该叫桥了吧？”（感谢蒋响元、王仁祥、韩建明等先生提供照片）“非也非也，我叫榷。”“那到底谁叫桥啊？？？”“我叫桥！”“欺负我读书...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-08-10",
+    "capturedAt": "2026-06-14T05:01:32.611Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5248.htm"
+  },
+  {
+    "id": "wechat-search-诗话桥-2020-08-09-中南大学土木工程学院-中南桥话-诗话桥梁访安化-几多风雨几多情",
     "platform": "wechat-search",
     "type": "article",
     "keyword": "诗话桥",
-    "title": "诗话桥梁--土木院与文新院开展跨学科交叉研究",
-    "author": "文小院",
-    "summary": "...筑与文学的交叉研究才具备了可能与必要性，作为建筑艺术与经典文学之间有机联系载体的桥梁成为土木院与文新院跨学科交叉研究的主题， 在此基础上，“诗话桥梁”线上开题会于今天（2020年6月11日）上午10时举行，参与会议的有中南大学土木工程学院和文学与新闻传播学院的院长、书记、知名教授、硕博...",
+    "title": "中南桥话|诗话桥梁访安化，几多风雨几多情",
+    "author": "中南大学土木工程学院",
+    "summary": "8月6日-8日，由 中南大学古桥研究中心 和 中南大学中华经典吟唱与传播基地 共同发起的中南大学 “诗话桥梁”党员博士服务团 来到益阳市安化县寻访考察安化风雨桥。此次社会实践活动由中南大学土木工程学院院长何旭辉带队，组织了包括长沙学院、土木工程学...",
     "summarySource": "raw_excerpt",
-    "publishedAt": "2020-06-11",
-    "capturedAt": "2026-06-11T02:51:22.984Z",
+    "publishedAt": "2020-08-09",
+    "capturedAt": "2026-06-14T03:47:58.592Z",
     "engagement": 0,
-    "tags": [],
-    "sourceUrl": "https://mp.weixin.qq.com/s?src=11&timestamp=1781146181&ver=6775&signature=yCjET4evv5dQK-CH8Cf88pcOGnZx52kzvhbBrhyBbRrJf1CDLfz7ESVLbSdnGay1uRl6cVDqfG9DPgbxRnjPBDq8YEhwBFtmWqMqIuJsCIWqqr6TjKs8tvpdTO-jyTQH&new=1"
+    "sourceUrl": "https://mp.weixin.qq.com/s/IVD-31RYKs5Le-Zltvs-Wg",
+    "tags": [
+      "中南大学土木工程学院",
+      "诗话桥"
+    ]
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5264-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "中南大学古桥研究中心寻访考察安化风雨桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "8月6日-8日，由中南大学古桥研究中心和中南大学中华经典吟唱与传播基地共同发起的中南大学“诗话桥梁”党员博士服务团来到益阳市安化县寻访考察安化风雨桥。此次社会实践活动由中南大学土木工程学院院长何旭辉带队，组织了包括长沙学院、土木工程学院和文学与新闻传播学院在内的13名师生共同参与，受到了安化县委宣...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-08-09",
+    "capturedAt": "2026-06-14T05:01:32.689Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5264.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5263-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "第八届中国古桥研究与保护学术研讨会在中南大学校成功召开",
+    "author": "中南大学古桥研究中心",
+    "summary": "2019年11月20日-23日，由北京茅以升科技教育基金会主办，中南大学土木工程学院和北京茅以升科技教育基金会中国古桥研究与保护委员会承办的第八届中国古桥研究与保护学术研讨会在中南大学铁道校区召开。中国工程院院士、原铁道部常务副部长孙永福，中国工程院院士、广西大学教授郑皆连，中国工程院院士、湖南大...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-24",
+    "capturedAt": "2026-06-14T05:01:32.756Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5263.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1632-5262-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "诗话桥梁——土木院与文新院开展跨学科交叉研究",
+    "author": "中南大学古桥研究中心",
+    "summary": "桥梁意象在我国古代文学中源远流长，早在先秦的文献中就可以见到有关“桥”、“梁”的记载，“文定厥祥，亲迎于渭。造舟为梁，不显其光。（《诗经·大明》）”在这里，“梁”作为具有实际意义的指向存在。“有狐绥绥，在彼淇梁。心之忧矣，之子无裳。（《诗经·有狐》）”此中的“桥”不仅实指桥梁，而且位于诗首的景物渲...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-24",
+    "capturedAt": "2026-06-14T05:01:32.868Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "新闻公告"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1632/5262.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5218-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "永锡桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "永锡桥 位于安化洞市镇锡潭村，茶马古道上，横跨麻溪。始建于清光绪二年（1876），以陈五芝为首，由当地43家茶行以及附近村民捐资修建，历时5年完工。该桥为4孔石墩伸臂梁木廊桥，桥长83米，宽4.2米，高13米。石墩砌筑分水尖，上刻太极图和蜈蚣浮雕，太极图寓意阴阳平衡，蜈蚣寓意克龙防蛟。鹊木架上横铺...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:32.950Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5218.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5217-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "廻龙桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "廻龙桥 位于通道坪坦乡坪坦村。始建于清乾隆二十六年（1761），2006年公布为全国重点文物保护单位。廻龙桥系伸臂木拱和伸臂梁组合结构风雨桥，2墩3孔，桥长63.01米，宽3.86米。桥廊两边设有长凳，桥上耸立3座宝塔式楼阁，楼阁的收尖部有覆钵、宝瓶、小鸟等装饰物，顶端雕有铜鸟，嘴里安有簧片，迎风...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.014Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5217.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5216-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "普修桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "普修桥 位于通道县皇都乡，始建于清嘉庆八年（1803），1999年公布为怀化市级文物保护单位。该桥为迭梁式木构架廊桥，2墩3孔。桥长57.5米，宽4.2米。置桥廊21间，4柱3间排架。桥廊壁面封板密槛，开通直棂窗，桥面铺木板。桥两端及中部建3座桥亭，分别为三重和五重檐式；桥顶四龙护宝，寓周围四山护...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.084Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5216.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5215-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "惠同廊桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "惠同廊桥 位于宁乡县沙田村境内，跨涓水河，始建于清道光十四年（1834）。民国16年（1927），中国共产党创始人之一何叔衡长兄何玉书倡修茶亭于其上，定名惠同廊桥。2006年公布为湖南省级文物保护单位。该桥为3孔石墩石梁廊桥，桥长22米，宽4米，高8.9米，每孔净跨5.8米。桥面、桥墩、栏杆、廊柱...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.151Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5215.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5214-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "龙潭桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "龙潭桥 位于新化县田坪镇龙潭村，跨资江支流油溪河，始建于清咸丰八年（1858）。1994年公布为新化县级文物保护单位，2002年公布为湖南省级文物保护单位。该桥为石墩悬臂式木廊风雨桥，4墩3孔20扇，全长约50米，宽5米。石墩为尖型分水墩，减少流水对桥墩的冲击，石块之间用银锭铆接。桥廊重檐歇山顶，...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.219Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5214.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5213-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "广利桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "广利桥 位于距东安县紫溪镇花桥村，跨湘江支流紫水河。始建于清乾隆三十八年（1773），光绪二十年（1876）重修。1983年公布为湖南省级文物保护单位。该桥全长36.8米，高7米，拱高6米，桥宽4.5米，每孔净跨10米。下部结构为3孔石拱桥，拱脚落水处收薄至0.33米，迎水处做成突出的尖钩状，有如...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.293Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5213.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5212-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "长田桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "长田桥 位于道县寿雁镇长田村，湘桂古道上，跨洑水河。始建于明正统年间（1435～1449），光绪三年（1877）《道州志》载：“长田桥在州西北三十里进贤乡，……明正统间坊民何宗源，国朝康熙坊民黄云伋等先后重修。”该桥为5孔石拱桥，长59米，宽5.5米，高7.1米。现桥两端台阶已被垫平，供小型农用车...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.355Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5212.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5211-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "毛公桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "毛公桥 位于宁乡巷子口镇今直田村(原谷石村)，始建于清乾隆年间，1948年重修。2007年公布为长沙市级文物保护单位。该桥为拱梁组合构造，4孔石梁桥联单孔石拱桥。全长58米，梁桥桥面宽2米，拱桥桥面宽5米；梁桥每孔跨径在6～8米之间，拱桥跨径为14.8米。全桥麻石砌筑，桥身镌刻蜈蚣浮雕，寓蜈蚣避水...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.425Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5211.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5210-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "寿隆桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "寿隆桥 位于江永县夏层铺镇上甘棠村，潇贺古道上。据《上甘棠众架石桥捨钱题记》载，与寿隆桥结构相同、位置相邻的栈道桥建于北宋靖康年间，有专家据此推断寿隆桥同样建于北宋靖康年间。又据石碑“重建寿隆桥记”的记载：“……甘棠周氏宅东北隅一里许，有桥曰寿隆，屡兴屡废，难为长久之策。爰自成化辛卯冬，棠溪积善君...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.489Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5210.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5209-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "踏水桥",
+    "author": "中南大学古桥研究中心",
+    "summary": "踏水桥 位于新邵县小塘镇渡头桥村，跨石马江，始建于明代。该桥为木石组合墩石梁桥，长128米，以枞木、松木等材料，在江底打造群桩基础，在木柱桩群上加盖顶横梁组成排架，在排架上部安置石盘，石盘之上承托锥形石墩，一共有52块石墩，其上铺设53块青石板连接成桥面，供人行走过河。据考证，踏水桥始建于明代，古...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.563Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5209.htm"
+  },
+  {
+    "id": "csu-bridge-center-civil-csu-edu-cn-info-1630-5208-htm",
+    "platform": "csu-bridge-center",
+    "type": "article",
+    "keyword": "诗话桥",
+    "title": "沱江跳岩",
+    "author": "中南大学古桥研究中心",
+    "summary": "沱江跳岩 位于凤凰古城北门外沱江河道中，始建于清康熙四十三年（1704）。跳岩长约100米，由69组高低对应的红砂岩料石组成，石磴相距一步之遥，走的时候一步一跳，故称“跳岩”。跳岩在主河道处留有两孔宽约6米的船行通道，通道上面用木板搭铺，便于必要时船只能上下通行。沱江跳岩旧时是进出凤凰古城的主要通...",
+    "summarySource": "meta_description",
+    "publishedAt": "2020-07-21",
+    "capturedAt": "2026-06-14T05:01:33.641Z",
+    "engagement": 0,
+    "tags": [
+      "中南大学古桥研究中心",
+      "古桥诗选"
+    ],
+    "sourceUrl": "https://civil.csu.edu.cn/info/1630/5208.htm"
   }
 ]

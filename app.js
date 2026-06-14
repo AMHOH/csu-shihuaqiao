@@ -1,3 +1,7 @@
+const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
+const IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+const DOCUMENT_MAX_BYTES = 100 * 1024 * 1024;
+
 const state = {
   platform: "all",
   category: "all",
@@ -5,40 +9,198 @@ const state = {
   query: "",
   sort: "newest",
   items: [],
+  remoteItems: [],
+  pendingItems: [],
+  currentUser: null,
+  activeRoute: "landing",
+  pendingRoute: "publish",
+  publishKind: "article",
+  otpEmail: "",
+  otpVerification: null,
 };
 
 const platformLabels = {
   "wechat-search": "微信搜索",
   "csu-bridge-center": "中南大学古桥研究中心",
+  "site-homework": "站内作业",
   "hunan-cppcc-news": "湖南政协新闻网",
   "yueyang-news": "岳阳新闻网",
   "visit-beijing": "北京旅游网",
   "changsha-evening-news": "长沙晚报网",
+  "xingchen-news": "星辰在线",
   bilibili: "B站",
   weibo: "微博",
 };
 
 const typeLabels = {
   article: "文章",
+  file: "文件",
   video: "视频",
 };
 
+const uploaderLabels = {
+  "site-homework": "上传者",
+};
+
+const apiBase = (document.querySelector('meta[name="bridge-api-base"]')?.content.trim() || "").replace(/\/+$/, "");
+const cloudbaseEnv = document.querySelector('meta[name="bridge-cloudbase-env"]')?.content.trim() || "";
+const cloudbaseRegion = document.querySelector('meta[name="bridge-cloudbase-region"]')?.content.trim() || "";
+const cloudbaseFunctionName = document.querySelector('meta[name="bridge-cloudbase-function"]')?.content.trim() || "bridge-api";
+const fallbackAdminEmails = new Set(
+  (document.querySelector('meta[name="bridge-admin-emails"]')?.content || "")
+    .split(/[,，\s]+/)
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+);
+
+let cloudbaseApp = null;
+let cloudbaseAuth = null;
+
+const landingView = document.querySelector("#landingView");
+const appHeader = document.querySelector("#appHeader");
+const appMain = document.querySelector("#appMain");
+const backHomeButton = document.querySelector("#backHomeButton");
+const archiveView = document.querySelector("#archiveView");
+const authView = document.querySelector("#authView");
+const publishView = document.querySelector("#publishView");
 const grid = document.querySelector("#contentGrid");
 const template = document.querySelector("#itemTemplate");
 const emptyState = document.querySelector("#emptyState");
 const resultMeta = document.querySelector("#resultMeta");
 const searchInput = document.querySelector("#searchInput");
 const sortSelect = document.querySelector("#sortSelect");
+const authForm = document.querySelector("#authForm");
+const authTitle = document.querySelector("#authTitle");
+const authCopy = document.querySelector(".auth-copy");
+const authSubmit = document.querySelector("#authSubmit");
+const authEmail = document.querySelector("#authEmail");
+const authCode = document.querySelector("#authCode");
+const authMessage = document.querySelector("#authMessage");
+const sendCodeButton = document.querySelector("#sendCodeButton");
+const publishForm = document.querySelector("#publishForm");
+const uploaderNameInput = document.querySelector("#uploaderNameInput");
+const publishHint = document.querySelector("#publishHint");
+const publishSubmit = document.querySelector("#publishSubmit");
+const publishMessage = document.querySelector("#publishMessage");
+const logoutButton = document.querySelector("#logoutButton");
+const reviewPanel = document.querySelector("#reviewPanel");
+const reviewMeta = document.querySelector("#reviewMeta");
+const reviewList = document.querySelector("#reviewList");
+const publishKindInput = document.querySelector("#publishKind");
+const articleFields = document.querySelector("#articleFields");
+const fileFields = document.querySelector("#fileFields");
+const articleEditor = document.querySelector("#articleEditor");
+const articleImageInput = document.querySelector("#articleImageInput");
+const insertImageButton = document.querySelector("#insertImageButton");
+const fontFamilySelect = document.querySelector("#fontFamilySelect");
+const fontSizeSelect = document.querySelector("#fontSizeSelect");
+const documentFileInput = document.querySelector("#documentFileInput");
+const detailDialog = document.querySelector("#detailDialog");
+const detailCloseButton = document.querySelector("#detailCloseButton");
+const detailPlatform = document.querySelector("#detailPlatform");
+const detailType = document.querySelector("#detailType");
+const detailDate = document.querySelector("#detailDate");
+const detailTitle = document.querySelector("#detailTitle");
+const detailBody = document.querySelector("#detailBody");
+const detailFiles = document.querySelector("#detailFiles");
+
+const storageKeys = {
+  session: "bridge-session",
+  publicItems: "bridge-public-items",
+  pendingItems: "bridge-pending-items",
+};
+
+const api = {
+  async request(action, data = {}) {
+    if (cloudbaseEnv) {
+      const app = getCloudbaseApp();
+      const response = await app.callFunction({
+        name: cloudbaseFunctionName,
+        data: { action, data },
+      });
+      const payload = response.result || {};
+      if (payload.ok === false) throw new Error(payload.message || "云函数请求失败。");
+      return payload.data || payload;
+    }
+
+    if (apiBase) {
+      return requestLegacyApi(action, data);
+    }
+
+    throw new Error("API_NOT_CONFIGURED");
+  },
+
+  async me(fallbackUser) {
+    return this.request("me", { fallbackUser });
+  },
+
+  async listItems() {
+    return this.request("listPublicContents");
+  },
+
+  async createItem(item) {
+    return this.request("submitContent", { item });
+  },
+
+  async listPendingItems() {
+    return this.request("listPendingContents");
+  },
+
+  async reviewItem(id, action) {
+    return this.request("reviewContent", { id, reviewAction: action });
+  },
+};
+
+async function requestLegacyApi(action, data) {
+  const map = {
+    listPublicContents: { path: "/items", method: "GET" },
+    submitContent: { path: "/items", method: "POST", body: data.item },
+    listPendingContents: { path: "/admin/pending-items", method: "GET" },
+    reviewContent: {
+      path: `/admin/pending-items/${encodeURIComponent(data.id)}`,
+      method: "POST",
+      body: { action: data.reviewAction },
+    },
+    me: { path: "/auth/me", method: "GET" },
+  };
+  const target = map[action];
+  if (!target) throw new Error(`未知接口：${action}`);
+
+  const headers = { "Content-Type": "application/json" };
+  if (state.currentUser?.token) headers.Authorization = `Bearer ${state.currentUser.token}`;
+
+  const response = await fetch(`${apiBase}${target.path}`, {
+    method: target.method,
+    headers,
+    body: target.body ? JSON.stringify(target.body) : undefined,
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.message || `HTTP ${response.status}`);
+  return payload;
+}
 
 async function loadItems() {
   try {
     const response = await fetch("./data/items.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    state.items = await response.json();
+    const staticItems = await response.json();
+    const remoteItems = await loadRemotePublicItems();
+    state.remoteItems = remoteItems;
+    state.items = mergeById([...remoteItems, ...staticItems, ...getLocalPublicItems()]);
     render();
   } catch (error) {
     resultMeta.textContent = "数据载入失败，请通过本地服务器打开页面。";
     console.error(error);
+  }
+}
+
+async function loadRemotePublicItems() {
+  try {
+    const payload = await api.listItems();
+    return Array.isArray(payload) ? payload : payload.items || [];
+  } catch (error) {
+    if (cloudbaseEnv || apiBase) console.warn("公开内容接口不可用，已使用本地数据。", error);
+    return [];
   }
 }
 
@@ -53,15 +215,17 @@ function getFilteredItems() {
       return state.category === "homework" ? isHomework : !isHomework;
     })
     .filter((item) => state.type === "all" || item.type === state.type)
+    .filter((item) => item.status !== "pending" && item.status !== "rejected")
     .filter((item) => {
       if (!query) return true;
       const haystack = [
         item.title,
         item.author,
         item.summary,
-        item.excerpt,
+        item.bodyText,
         item.keyword,
         item.sourceUrl,
+        item.contentKind,
         platformLabels[item.platform],
         typeLabels[item.type],
         ...(item.tags || []),
@@ -71,9 +235,8 @@ function getFilteredItems() {
       return haystack.includes(query);
     })
     .sort((a, b) => {
-      if (state.sort === "engagement") return b.engagement - a.engagement;
-      const left = new Date(a.publishedAt).getTime();
-      const right = new Date(b.publishedAt).getTime();
+      const left = new Date(a.publishedAt || 0).getTime();
+      const right = new Date(b.publishedAt || 0).getTime();
       return state.sort === "oldest" ? left - right : right - left;
     });
 }
@@ -91,10 +254,12 @@ function render() {
     const time = node.querySelector("time");
     const title = node.querySelector("h3");
     const summary = node.querySelector(".summary");
+    const uploader = node.querySelector(".item-uploader");
     const tags = node.querySelector(".item-tags");
     const link = node.querySelector(".source-link");
     const urlStatus = getUrlStatus(item);
     const isHomework = (item.tags || []).includes("作业展示");
+    const isSiteContent = item.platform === "site-homework";
 
     card.dataset.platform = item.platform;
     card.dataset.urlStatus = urlStatus;
@@ -106,9 +271,15 @@ function render() {
     time.dateTime = item.publishedAt;
     title.textContent = item.title;
     summary.textContent = item.summary;
+    renderUploader(uploader, item);
     renderTags(tags, item.tags, isHomework ? ["作业展示"] : []);
 
-    if (urlStatus === "exact") {
+    if (isSiteContent) {
+      link.href = "#";
+      link.dataset.openItem = item.id;
+      link.textContent = item.type === "file" ? "查看文件" : "查看内容";
+      link.setAttribute("aria-label", `打开站内内容：${item.title}`);
+    } else if (urlStatus === "exact") {
       link.href = item.sourceUrl;
       link.textContent = "查看原文";
       link.setAttribute("aria-label", `打开原文：${item.title}`);
@@ -124,8 +295,536 @@ function render() {
 
   emptyState.hidden = items.length > 0;
   const exactCount = items.filter((item) => getUrlStatus(item) === "exact").length;
-  resultMeta.textContent = `当前显示 ${items.length} / ${state.items.length} 条，${exactCount} 条可回跳原文`;
+  resultMeta.textContent = `当前显示 ${items.length} / ${state.items.length} 条，${exactCount} 条可回跳原文或站内内容`;
   updateStats(items);
+}
+
+function loadSession() {
+  const session = readJson(storageKeys.session, null);
+
+  if (!session || !session.email || !session.expiresAt || session.expiresAt <= Date.now()) {
+    clearSession();
+    return;
+  }
+
+  state.currentUser = session;
+  updateSessionExpiry();
+  updateAuthAwareUi();
+}
+
+function updateSessionExpiry() {
+  if (!state.currentUser) return;
+  state.currentUser.expiresAt = Date.now() + SESSION_DURATION_MS;
+  localStorage.setItem(storageKeys.session, JSON.stringify(state.currentUser));
+}
+
+function persistSession(user) {
+  const normalized = normalizeUser(user);
+  state.currentUser = normalized;
+  localStorage.setItem(storageKeys.session, JSON.stringify(normalized));
+  updateAuthAwareUi();
+}
+
+function clearSession() {
+  state.currentUser = null;
+  localStorage.removeItem(storageKeys.session);
+  updateAuthAwareUi();
+}
+
+function normalizeUser(user = {}) {
+  const email = getUserEmail(user);
+  const uid = user.uid || user.id || user.userId || user._id || "";
+  const isAdminUser = Boolean(user.isAdmin || user.role === "admin" || fallbackAdminEmails.has(email));
+
+  return {
+    uid,
+    email,
+    role: isAdminUser ? "admin" : "user",
+    isAdmin: isAdminUser,
+    token: user.token || user.accessToken || "",
+    expiresAt: user.expiresAt || Date.now() + SESSION_DURATION_MS,
+  };
+}
+
+function getUserEmail(user = {}) {
+  const identities = Array.isArray(user.identities) ? user.identities : [];
+  const identityEmail = identities
+    .map((identity) => identity.email || identity.mailbox || identity.userName)
+    .find(Boolean);
+  return String(user.email || user.mailbox || user.username || identityEmail || "").trim().toLowerCase();
+}
+
+function isAdmin() {
+  return Boolean(state.currentUser?.isAdmin || state.currentUser?.role === "admin");
+}
+
+function updateAuthCopy() {
+  authTitle.textContent = "内容发布";
+  authCopy.textContent = "输入邮箱获取验证码，首次登录会自动创建账号。";
+  authSubmit.textContent = "登录 / 注册";
+}
+
+function showView(route) {
+  if (route === "landing") {
+    state.activeRoute = "landing";
+    landingView.hidden = false;
+    appHeader.hidden = true;
+    appMain.hidden = true;
+    return;
+  }
+
+  const needsAuth = route === "publish";
+  const nextRoute = needsAuth && !state.currentUser ? "auth" : route;
+
+  if (needsAuth && !state.currentUser) {
+    state.pendingRoute = "publish";
+    updateAuthCopy();
+  }
+
+  state.activeRoute = nextRoute;
+  landingView.hidden = true;
+  appHeader.hidden = false;
+  appMain.hidden = false;
+  archiveView.hidden = nextRoute !== "archive";
+  authView.hidden = nextRoute !== "auth";
+  publishView.hidden = nextRoute !== "publish";
+  archiveView.classList.toggle("is-active", nextRoute === "archive");
+  authView.classList.toggle("is-active", nextRoute === "auth");
+  publishView.classList.toggle("is-active", nextRoute === "publish");
+
+  if (nextRoute === "publish") {
+    updateAuthAwareUi();
+    loadPendingItems();
+  }
+
+  updateViewToggle(nextRoute);
+}
+
+function updateViewToggle(activeRoute = state.activeRoute) {
+  const selectedRoute = activeRoute === "auth" ? "publish" : activeRoute;
+
+  document.querySelectorAll('.site-nav [data-route="archive"], .site-nav [data-route="publish"]').forEach((button) => {
+    const isActive = button.dataset.route === selectedRoute;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function updateAuthAwareUi() {
+  const admin = isAdmin();
+  const signedIn = Boolean(state.currentUser);
+
+  publishHint.textContent = admin
+    ? "管理员提交的作业展示会直接公开。"
+    : "普通用户提交后会进入管理员审核，通过后公开展示。";
+  publishSubmit.textContent = admin ? "直接发布" : "提交审核";
+  logoutButton.hidden = !signedIn;
+  reviewPanel.hidden = !admin;
+}
+
+async function signIn(user) {
+  const normalized = normalizeUser(user);
+  const profile = await fetchCurrentUserProfile(normalized);
+  persistSession(profile);
+  showView(state.pendingRoute || "publish");
+}
+
+async function fetchCurrentUserProfile(fallbackUser) {
+  try {
+    const payload = await api.me(fallbackUser);
+    const user = payload.user || payload;
+    return normalizeUser({ ...fallbackUser, ...user });
+  } catch (error) {
+    if (cloudbaseEnv || apiBase) console.warn("用户权限接口不可用，已使用前端显示兜底。", error);
+    return normalizeUser(fallbackUser);
+  }
+}
+
+async function handleSendCode() {
+  const email = authEmail.value.trim().toLowerCase();
+  if (!email) {
+    authMessage.textContent = "请先填写邮箱。";
+    return;
+  }
+
+  sendCodeButton.disabled = true;
+  authMessage.textContent = "正在发送验证码...";
+
+  try {
+    if (cloudbaseEnv) {
+      const auth = getCloudbaseAuth();
+      state.otpVerification = await auth.getVerification({ email });
+    } else {
+      state.otpVerification = async ({ token }) => {
+        if (token !== "123456") throw new Error("本地预览验证码为 123456。");
+        return { data: { user: { email, uid: `local-${email}` } } };
+      };
+    }
+
+    state.otpEmail = email;
+    authMessage.textContent = cloudbaseEnv ? "验证码已发送，请查看邮箱。" : "本地预览验证码：123456。";
+  } catch (error) {
+    authMessage.textContent = error.message || "验证码发送失败，请稍后重试。";
+  } finally {
+    sendCodeButton.disabled = false;
+  }
+}
+
+async function handleAuthSubmit(event) {
+  event.preventDefault();
+  const email = authEmail.value.trim().toLowerCase();
+  const code = authCode.value.trim();
+
+  if (!email || !code) {
+    authMessage.textContent = "请填写邮箱和验证码。";
+    return;
+  }
+
+  if (state.otpEmail !== email || typeof state.otpVerification !== "function") {
+    authMessage.textContent = "请先获取验证码。";
+    return;
+  }
+
+  authSubmit.disabled = true;
+  authMessage.textContent = "正在登录...";
+
+  try {
+    let user = { email };
+    if (cloudbaseEnv) {
+      const auth = getCloudbaseAuth();
+      await auth.signInWithEmail({
+        verificationInfo: state.otpVerification,
+        verificationCode: code,
+        email,
+      });
+      user = (typeof auth.getCurrentUser === "function" ? await auth.getCurrentUser() : auth.currentUser) || user;
+    } else {
+      const response = await state.otpVerification({ token: code });
+      if (response.error) throw new Error(response.error.message || "验证码不正确。");
+      user = response.data?.user || response.user || user;
+    }
+    authMessage.textContent = "";
+    authCode.value = "";
+    await signIn(user);
+  } catch (error) {
+    authMessage.textContent = error.message || "登录失败，请重新获取验证码。";
+  } finally {
+    authSubmit.disabled = false;
+  }
+}
+
+async function handlePublishSubmit(event) {
+  event.preventDefault();
+
+  if (!state.currentUser) {
+    state.pendingRoute = "publish";
+    showView("publish");
+    return;
+  }
+
+  publishSubmit.disabled = true;
+  publishMessage.textContent = isAdmin() ? "正在发布..." : "正在提交审核...";
+
+  try {
+    const item = await getPublishFormItem();
+    const localStatus = isAdmin() ? "approved" : "pending";
+    const saved = await createItem(item);
+    const normalized = normalizeItem(saved, { ...item, status: localStatus });
+
+    resetPublishForm();
+    publishMessage.textContent = normalized.status === "approved" ? "已发布，所有用户都可以查看。" : "已提交管理员审核。";
+
+    if (normalized.status === "approved") {
+      state.items = mergeById([normalized, ...state.items]);
+      saveLocalPublicItem(normalized);
+      render();
+    } else {
+      state.pendingItems = mergeById([normalized, ...state.pendingItems]);
+      saveLocalPendingItems(state.pendingItems);
+      renderPendingItems();
+    }
+  } catch (error) {
+    publishMessage.textContent = error.message || "发布失败，请稍后重试。";
+  } finally {
+    publishSubmit.disabled = false;
+  }
+}
+
+async function getPublishFormItem() {
+  const formData = new FormData(publishForm);
+  const title = String(formData.get("title") || "").trim();
+  const uploaderName = String(formData.get("uploaderName") || "").trim();
+  const kind = state.publishKind;
+  const now = new Date();
+  const id = `homework-${now.getTime()}`;
+
+  if (!title) throw new Error("请填写标题。");
+  if (!uploaderName) throw new Error("请填写上传者。");
+
+  const base = {
+    id,
+    platform: "site-homework",
+    type: kind === "file" ? "file" : "article",
+    contentKind: kind,
+    keyword: "诗话桥",
+    title,
+    author: uploaderName,
+    uploaderName,
+    submittedBy: state.currentUser.email,
+    submittedByUid: state.currentUser.uid,
+    publishedAt: now.toISOString().slice(0, 10),
+    submittedAt: now.toISOString(),
+    capturedAt: now.toISOString(),
+    summarySource: "manual_verified",
+    engagement: 0,
+    tags: ["作业展示"],
+    sourceUrl: `site://homework/${id}`,
+  };
+
+  if (kind === "file") {
+    const file = documentFileInput.files?.[0];
+    if (!file) throw new Error("请选择文件。");
+    validateDocument(file);
+    const attachment = await uploadDocument(file, id);
+    return {
+      ...base,
+      summary: `文件作业展示：${file.name}`,
+      bodyText: "",
+      attachments: [attachment],
+    };
+  }
+
+  const rawHtml = articleEditor.innerHTML.trim();
+  const text = cleanText(articleEditor.textContent || "");
+  if (!text && !articleEditor.querySelector("img")) throw new Error("请填写正文内容。");
+
+  return {
+    ...base,
+    summary: truncate(text || "图片作业展示", 120),
+    bodyHtml: sanitizeRichHtml(rawHtml),
+    bodyText: text,
+    attachments: collectEditorImages(),
+  };
+}
+
+async function createItem(payload) {
+  try {
+    const response = await api.createItem(payload);
+    return response.item || response;
+  } catch (error) {
+    if (cloudbaseEnv || apiBase) throw error;
+    return { ...payload, status: isAdmin() ? "approved" : "pending" };
+  }
+}
+
+async function loadPendingItems() {
+  if (!isAdmin()) return;
+
+  reviewMeta.textContent = "正在载入...";
+
+  try {
+    const response = await api.listPendingItems();
+    state.pendingItems = Array.isArray(response) ? response : response.items || [];
+  } catch (error) {
+    if (cloudbaseEnv || apiBase) console.warn("待审核接口不可用，已使用本地待审核数据。", error);
+    state.pendingItems = getLocalPendingItems();
+  }
+
+  renderPendingItems();
+}
+
+function renderPendingItems() {
+  if (!isAdmin()) return;
+
+  reviewList.innerHTML = "";
+  reviewMeta.textContent = state.pendingItems.length ? `${state.pendingItems.length} 条待审核` : "暂无待审核内容";
+
+  for (const item of state.pendingItems) {
+    const card = document.createElement("article");
+    card.className = "review-card";
+    card.innerHTML = `
+      <div class="review-card__meta">
+        <span>${escapeHtml(platformLabels[item.platform] || item.platform || "未知平台")}</span>
+        <span>${escapeHtml(typeLabels[item.type] || item.type || "内容")}</span>
+        <time>${escapeHtml(item.displayDate || formatDate(item.publishedAt))}</time>
+      </div>
+      <h3>${escapeHtml(item.title || "未命名内容")}</h3>
+      <p>${escapeHtml(item.summary || "")}</p>
+      <button class="back-link review-preview" type="button" data-open-item="${escapeAttribute(item.id)}">查看内容</button>
+      <div class="review-card__actions">
+        <button class="secondary-action" type="button" data-review-action="reject" data-review-id="${escapeAttribute(item.id)}">拒绝</button>
+        <button class="form-submit" type="button" data-review-action="approve" data-review-id="${escapeAttribute(item.id)}">通过</button>
+      </div>
+    `;
+    reviewList.append(card);
+  }
+}
+
+async function handleReviewAction(button) {
+  const id = button.dataset.reviewId;
+  const action = button.dataset.reviewAction;
+  const item = state.pendingItems.find((entry) => entry.id === id);
+  if (!item) return;
+
+  button.disabled = true;
+
+  try {
+    const reviewed = await reviewItem(id, action);
+    state.pendingItems = state.pendingItems.filter((entry) => entry.id !== id);
+    saveLocalPendingItems(state.pendingItems);
+
+    if (action === "approve") {
+      const approved = normalizeItem(reviewed.item || reviewed, { ...item, status: "approved" });
+      state.items = mergeById([approved, ...state.items]);
+      saveLocalPublicItem(approved);
+      render();
+    }
+
+    renderPendingItems();
+  } catch (error) {
+    reviewMeta.textContent = error.message || "审核操作失败，请稍后重试。";
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function reviewItem(id, action) {
+  try {
+    return await api.reviewItem(id, action);
+  } catch (error) {
+    if (cloudbaseEnv || apiBase) throw error;
+    return { item: { ...state.pendingItems.find((item) => item.id === id), status: action === "approve" ? "approved" : "rejected" } };
+  }
+}
+
+function setPublishKind(kind) {
+  state.publishKind = kind;
+  publishKindInput.value = kind;
+  articleFields.hidden = kind !== "article";
+  fileFields.hidden = kind !== "file";
+  document.querySelectorAll("[data-publish-kind]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.publishKind === kind);
+  });
+  publishMessage.textContent = "";
+}
+
+function resetPublishForm() {
+  publishForm.reset();
+  articleEditor.innerHTML = "";
+  setPublishKind("article");
+}
+
+function handleEditorCommand(command) {
+  articleEditor.focus();
+  document.execCommand(command, false);
+}
+
+function handleFontFamily(value) {
+  if (!value) return;
+  articleEditor.focus();
+  document.execCommand("fontName", false, value);
+  fontFamilySelect.value = "";
+}
+
+function handleFontSize(value) {
+  if (!value) return;
+  articleEditor.focus();
+  document.execCommand("fontSize", false, value);
+  fontSizeSelect.value = "";
+}
+
+async function handleImageSelected() {
+  const file = articleImageInput.files?.[0];
+  articleImageInput.value = "";
+  if (!file) return;
+
+  try {
+    validateImage(file);
+    publishMessage.textContent = "正在插入图片...";
+    const image = await uploadEditorImage(file);
+    insertEditorImage(image.url, image.fileId, file.name);
+    publishMessage.textContent = "";
+  } catch (error) {
+    publishMessage.textContent = error.message || "图片插入失败。";
+  }
+}
+
+function validateImage(file) {
+  if (!file.type.startsWith("image/")) throw new Error("请选择图片文件。");
+  if (file.size > IMAGE_MAX_BYTES) throw new Error("图片大小不能超过 5MB。");
+}
+
+function validateDocument(file) {
+  const validExt = /\.(ppt|pptx|pdf|doc|docx)$/i.test(file.name);
+  if (!validExt) throw new Error("请选择 PPT、PDF 或 Word 文件。");
+  if (file.size > DOCUMENT_MAX_BYTES) throw new Error("文件大小不能超过 100MB。");
+}
+
+async function uploadEditorImage(file) {
+  if (!cloudbaseEnv) {
+    return { url: await readFileAsDataUrl(file), fileId: "" };
+  }
+
+  const fileId = await uploadFileToCloud(file, "homework/images");
+  const url = await getTempFileUrl(fileId);
+  return { url, fileId };
+}
+
+async function uploadDocument(file, itemId) {
+  if (!cloudbaseEnv) {
+    return {
+      fileName: file.name,
+      size: file.size,
+      type: file.type,
+      url: URL.createObjectURL(file),
+    };
+  }
+
+  const fileId = await uploadFileToCloud(file, `homework/file/${itemId}`);
+  return {
+    fileName: file.name,
+    size: file.size,
+    type: file.type,
+    fileId,
+  };
+}
+
+async function uploadFileToCloud(file, folder) {
+  const app = getCloudbaseApp();
+  const cloudPath = `${folder}/${Date.now()}-${safeFileName(file.name)}`;
+  const result = await app.uploadFile({
+    cloudPath,
+    filePath: file,
+  });
+  const fileId = result.fileID || result.fileId || result.data?.id;
+  if (!fileId) throw new Error("文件上传成功但未返回 fileID。");
+  return fileId;
+}
+
+async function getTempFileUrl(fileId) {
+  const app = getCloudbaseApp();
+  const result = await app.getTempFileURL({
+    fileList: [{ fileID: fileId, maxAge: 3600 }],
+  });
+  const file = result.fileList?.[0];
+  if (!file?.tempFileURL) throw new Error("无法获取文件临时链接。");
+  return file.tempFileURL;
+}
+
+function insertEditorImage(url, fileId, alt) {
+  articleEditor.focus();
+  const html = `<img src="${escapeAttribute(url)}" alt="${escapeAttribute(alt || "插图")}"${fileId ? ` data-cloud-file-id="${escapeAttribute(fileId)}"` : ""}>`;
+  document.execCommand("insertHTML", false, html);
+}
+
+function collectEditorImages() {
+  return [...articleEditor.querySelectorAll("img")]
+    .map((img) => ({
+      fileId: img.dataset.cloudFileId || "",
+      url: img.getAttribute("src") || "",
+      alt: img.getAttribute("alt") || "",
+    }))
+    .filter((item) => item.fileId || item.url);
 }
 
 function renderTags(container, tags = [], excludedTags = []) {
@@ -143,13 +842,88 @@ function renderTags(container, tags = [], excludedTags = []) {
 
 function updateStats(items) {
   const articles = items.filter((item) => item.type === "article").length;
-  const videos = items.filter((item) => item.type === "video").length;
+  const media = items.filter((item) => item.type === "video" || item.type === "file").length;
   const sources = new Set(items.map((item) => item.platform)).size;
 
   document.querySelector("#totalCount").textContent = items.length;
   document.querySelector("#articleCount").textContent = articles;
-  document.querySelector("#videoCount").textContent = videos;
+  document.querySelector("#videoCount").textContent = media;
   document.querySelector("#sourceCount").textContent = sources;
+}
+
+async function openDetail(item) {
+  if (!item) return;
+
+  detailPlatform.textContent = platformLabels[item.platform] || item.platform || "站内内容";
+  detailType.textContent = typeLabels[item.type] || item.type || "内容";
+  detailDate.textContent = item.displayDate || formatDate(item.publishedAt);
+  detailDate.dateTime = item.publishedAt || "";
+  detailTitle.textContent = item.title || "未命名内容";
+  detailFiles.innerHTML = "";
+
+  if (item.type === "file") {
+    detailBody.innerHTML = `${renderUploaderHtml(item)}${escapeHtml(item.summary || "")}`;
+    await renderAttachments(item.attachments || []);
+  } else {
+    detailBody.innerHTML = `${renderUploaderHtml(item)}${sanitizeRichHtml(item.bodyHtml || escapeHtml(item.summary || ""))}`;
+    await refreshDetailImages();
+  }
+
+  detailDialog.hidden = false;
+}
+
+function closeDetail() {
+  detailDialog.hidden = true;
+}
+
+function renderUploader(container, item) {
+  const uploaderName = cleanText(item.uploaderName || (item.platform === "site-homework" ? item.author : ""));
+  container.hidden = !uploaderName;
+  container.textContent = uploaderName ? `${uploaderLabels[item.platform] || "作者"}：${uploaderName}` : "";
+}
+
+function renderUploaderHtml(item) {
+  const uploaderName = cleanText(item.uploaderName || (item.platform === "site-homework" ? item.author : ""));
+  if (!uploaderName) return "";
+  const label = uploaderLabels[item.platform] || "作者";
+  return `<p class="detail-uploader">${escapeHtml(label)}：${escapeHtml(uploaderName)}</p>`;
+}
+
+async function renderAttachments(attachments) {
+  detailFiles.innerHTML = "";
+  for (const attachment of attachments) {
+    const link = document.createElement("a");
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.textContent = `${attachment.fileName || "下载文件"}${attachment.size ? `（${formatFileSize(attachment.size)}）` : ""}`;
+    link.href = attachment.url || "#";
+    detailFiles.append(link);
+
+    if (!attachment.url && attachment.fileId && cloudbaseEnv) {
+      try {
+        link.href = await getTempFileUrl(attachment.fileId);
+      } catch {
+        link.removeAttribute("href");
+        link.textContent = `${attachment.fileName || "文件"}（临时链接生成失败）`;
+      }
+    }
+  }
+}
+
+async function refreshDetailImages() {
+  if (!cloudbaseEnv) return;
+  const images = [...detailBody.querySelectorAll("img[data-cloud-file-id]")];
+  for (const img of images) {
+    try {
+      img.src = await getTempFileUrl(img.dataset.cloudFileId);
+    } catch {
+      img.alt = `${img.alt || "图片"}（临时链接生成失败）`;
+    }
+  }
+}
+
+function findItemById(id) {
+  return [...state.items, ...state.pendingItems].find((item) => item.id === id);
 }
 
 function formatDate(value) {
@@ -161,7 +935,15 @@ function formatDate(value) {
   }).format(new Date(value));
 }
 
+function formatFileSize(bytes) {
+  if (!Number.isFinite(bytes)) return "";
+  if (bytes >= 1024 * 1024) return `${(bytes / 1024 / 1024).toFixed(1)}MB`;
+  if (bytes >= 1024) return `${(bytes / 1024).toFixed(1)}KB`;
+  return `${bytes}B`;
+}
+
 function getUrlStatus(item) {
+  if (item.platform === "site-homework") return "exact";
   const sourceUrl = item.sourceUrl || item.url || "";
   if (!sourceUrl) return "missing";
 
@@ -191,7 +973,188 @@ function setActiveButton(button) {
   });
 }
 
-document.addEventListener("click", (event) => {
+function getLocalPublicItems() {
+  return readJson(storageKeys.publicItems, []);
+}
+
+function saveLocalPublicItem(item) {
+  if (cloudbaseEnv || apiBase) return;
+  const items = mergeById([item, ...getLocalPublicItems()]);
+  localStorage.setItem(storageKeys.publicItems, JSON.stringify(items));
+}
+
+function getLocalPendingItems() {
+  return readJson(storageKeys.pendingItems, []);
+}
+
+function saveLocalPendingItems(items) {
+  if (cloudbaseEnv || apiBase) return;
+  localStorage.setItem(storageKeys.pendingItems, JSON.stringify(items));
+}
+
+function normalizeItem(saved = {}, fallback = {}) {
+  const item = {
+    ...fallback,
+    ...saved,
+    id: saved.id || saved._id || fallback.id,
+  };
+  if (!item.tags?.includes("作业展示") && item.platform === "site-homework") {
+    item.tags = [...(item.tags || []), "作业展示"];
+  }
+  return item;
+}
+
+function mergeById(items) {
+  const map = new Map();
+
+  for (const item of items) {
+    if (!item) continue;
+    const id = item.id || item._id || item.sourceUrl || `${item.title}-${item.publishedAt}`;
+    map.set(id, { ...item, id });
+  }
+
+  return [...map.values()];
+}
+
+function readJson(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function getCloudbaseApp() {
+  if (!cloudbaseEnv) throw new Error("尚未配置 CloudBase 环境 ID。");
+  if (!window.cloudbase) throw new Error("CloudBase Web SDK 未加载。");
+  if (!cloudbaseApp) {
+    cloudbaseApp = window.cloudbase.init({
+      env: cloudbaseEnv,
+      ...(cloudbaseRegion ? { region: cloudbaseRegion } : {}),
+    });
+  }
+  return cloudbaseApp;
+}
+
+function getCloudbaseAuth() {
+  if (cloudbaseAuth) return cloudbaseAuth;
+  const app = getCloudbaseApp();
+  const directAuth = app.auth;
+  if (directAuth?.getVerification && directAuth?.signInWithEmail) {
+    cloudbaseAuth = directAuth;
+  } else if (typeof directAuth === "function") {
+    cloudbaseAuth = directAuth.call(app);
+  }
+  if (!cloudbaseAuth?.getVerification || !cloudbaseAuth?.signInWithEmail) {
+    throw new Error("当前 CloudBase SDK 不支持邮箱验证码登录，请检查 SDK 版本。");
+  }
+  return cloudbaseAuth;
+}
+
+function safeFileName(name) {
+  return String(name || "file").replace(/[^\w.\-\u4e00-\u9fa5]+/g, "-").replace(/-+/g, "-");
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(reader.error || new Error("读取文件失败。"));
+    reader.readAsDataURL(file);
+  });
+}
+
+function sanitizeRichHtml(html) {
+  const template = document.createElement("template");
+  template.innerHTML = html || "";
+  const allowedTags = new Set(["A", "B", "BR", "DIV", "EM", "FONT", "I", "IMG", "LI", "OL", "P", "SPAN", "STRONG", "U", "UL"]);
+  const allowedAttrs = new Set(["alt", "data-cloud-file-id", "face", "href", "size", "src", "target", "title"]);
+
+  template.content.querySelectorAll("*").forEach((node) => {
+    if (!allowedTags.has(node.tagName)) {
+      node.replaceWith(document.createTextNode(node.textContent || ""));
+      return;
+    }
+
+    [...node.attributes].forEach((attr) => {
+      const name = attr.name.toLowerCase();
+      if (!allowedAttrs.has(name)) {
+        node.removeAttribute(attr.name);
+        return;
+      }
+      if ((name === "href" || name === "src") && !isSafeUrl(attr.value)) {
+        node.removeAttribute(attr.name);
+      }
+    });
+
+    if (node.tagName === "A") {
+      node.setAttribute("target", "_blank");
+      node.setAttribute("rel", "noreferrer");
+    }
+  });
+
+  return template.innerHTML;
+}
+
+function isSafeUrl(value = "") {
+  return /^(https?:|data:image\/|blob:|cloud:\/\/)/i.test(value);
+}
+
+function cleanText(value = "") {
+  return String(value).replace(/\s+/g, " ").trim();
+}
+
+function truncate(text, max = 160) {
+  const cleaned = cleanText(text);
+  if (cleaned.length <= max) return cleaned;
+  return `${cleaned.slice(0, max - 1)}...`;
+}
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function escapeAttribute(value = "") {
+  return escapeHtml(value).replaceAll("`", "&#96;");
+}
+
+document.addEventListener("click", async (event) => {
+  const reviewButton = event.target.closest("[data-review-action]");
+  if (reviewButton) {
+    handleReviewAction(reviewButton);
+    return;
+  }
+
+  const openButton = event.target.closest("[data-open-item]");
+  if (openButton) {
+    event.preventDefault();
+    await openDetail(findItemById(openButton.dataset.openItem));
+    return;
+  }
+
+  const publishKindButton = event.target.closest("[data-publish-kind]");
+  if (publishKindButton) {
+    setPublishKind(publishKindButton.dataset.publishKind);
+    return;
+  }
+
+  const editorButton = event.target.closest("[data-editor-command]");
+  if (editorButton) {
+    handleEditorCommand(editorButton.dataset.editorCommand);
+    return;
+  }
+
+  const routeButton = event.target.closest("[data-route]");
+  if (routeButton) {
+    showView(routeButton.dataset.route);
+    return;
+  }
+
   const button = event.target.closest("[data-filter]");
   if (!button) return;
   state[button.dataset.filter] = button.dataset.value;
@@ -209,4 +1172,29 @@ sortSelect.addEventListener("change", (event) => {
   render();
 });
 
+backHomeButton.addEventListener("click", () => {
+  showView("landing");
+});
+
+logoutButton.addEventListener("click", () => {
+  clearSession();
+  showView("archive");
+});
+
+detailCloseButton.addEventListener("click", closeDetail);
+detailDialog.addEventListener("click", (event) => {
+  if (event.target === detailDialog) closeDetail();
+});
+
+sendCodeButton.addEventListener("click", handleSendCode);
+authForm.addEventListener("submit", handleAuthSubmit);
+publishForm.addEventListener("submit", handlePublishSubmit);
+insertImageButton.addEventListener("click", () => articleImageInput.click());
+articleImageInput.addEventListener("change", handleImageSelected);
+fontFamilySelect.addEventListener("change", (event) => handleFontFamily(event.target.value));
+fontSizeSelect.addEventListener("change", (event) => handleFontSize(event.target.value));
+
+loadSession();
+showView("landing");
+setPublishKind("article");
 loadItems();

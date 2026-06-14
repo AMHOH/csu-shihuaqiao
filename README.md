@@ -12,6 +12,46 @@ python3 -m http.server 4173
 
 然后打开 `http://localhost:4173`。
 
+## 登录、发布与审核接口
+
+前端默认会读取静态 `data/items.json`。未配置 CloudBase 环境时，可用本地预览验证码 `123456` 测试登录、提交审核和管理员审核流程。
+
+正式接入腾讯云 CloudBase 时，在 `index.html` 中填写：
+
+```html
+<meta name="bridge-cloudbase-env" content="你的 CloudBase 环境 ID" />
+<meta name="bridge-cloudbase-region" content="ap-shanghai" />
+<meta name="bridge-cloudbase-function" content="bridge-api" />
+```
+
+登录流程使用 CloudBase 邮箱验证码登录：输入邮箱、发送验证码、验证后登录。前端使用 `auth.getVerification({ email })` 发送验证码，并用 `auth.signInWithEmail(...)` 完成登录。首次登录即注册，CloudBase 会生成用户 `uid`。
+
+云函数建议使用 `cloudfunctions/bridge-api` 模板。前端调用同一个云函数并传入 `action`：
+
+- `me`：返回当前用户 `uid`、`email`、`isAdmin`
+- `listPublicContents`：返回已审核公开内容
+- `submitContent`：提交站内作业展示；普通用户保存为 `pending`，管理员保存为 `approved`
+- `listPendingContents`：管理员获取待审核内容
+- `reviewContent`：管理员通过或拒绝内容
+
+管理员身份必须由云函数查询 CloudBase 数据库判断。建议创建 `admins` 集合：
+
+```json
+{
+  "email": "admin@example.com",
+  "enabled": true
+}
+```
+
+前端里的 `bridge-admin-emails` 只能作为无后端本地预览或 UI 提示，不作为正式权限依据。
+
+站内发布目前支持：
+
+- 文章：标题、上传者、富文本正文、插入图片。图片前端限制 5MB。
+- 文件：标题、上传者、PPT / PDF / Word 文件。文件前端限制 100MB。
+
+日期由系统按提交/发布当天生成，精确到日。所有站内发布内容都会自动带 `作业展示` 标签。
+
 ## 数据更新
 
 页面读取 `data/items.json`。爬虫或人工整理脚本需要输出同样的字段：
@@ -34,9 +74,9 @@ python3 -m http.server 4173
 }
 ```
 
-`platform` 可选值：`wechat-search`、`csu-bridge-center`、`weibo`。
+`platform` 常用值：`wechat-search`、`csu-bridge-center`、`site-homework`、`weibo`。
 
-`type` 可选值：`article`、`video`、`note`。
+`type` 可选值：`article`、`video`、`file`。
 
 `summarySource` 可选值：
 
