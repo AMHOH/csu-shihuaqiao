@@ -9,13 +9,14 @@
   <meta name="bridge-cloudbase-region" content="ap-shanghai" />
   <meta name="bridge-cloudbase-function" content="bridge-api" />
   <meta name="bridge-admin-emails" content="" />
-  <title>诗话桥 / 诗画桥 内容档案</title>
+  <title>诗话桥档案</title>
   <link rel="stylesheet" href="https://unpkg.com/@wangeditor/editor@5.1.23/dist/css/style.css" />
-  <link rel="stylesheet" href="./styles.css?v=wangeditor-20260614" />
+  <link rel="stylesheet" href="./styles.css?v=about-20260615" />
 </head>
 
 <body>
   <section id="landingView" class="landing-view" aria-label="导航页">
+    <button id="aboutOpenButton" class="landing-about-button" type="button">关于</button>
     <div class="landing-shell">
       <blockquote class="landing-poem">
         <p>桥是土地与土地的连系；</p>
@@ -38,7 +39,7 @@
     <section class="hero__content" aria-labelledby="page-title">
       <h2 id="page-title">诗话桥课程档案</h2>
       <p class="hero__intro">
-        采集关键词：诗话桥 / 诗画桥。汇总文章、视频与社交讨论。
+        采集关键词：诗话桥 / 诗画桥。汇总文章、视频与课程作业。
       </p>
     </section>
   </header>
@@ -109,7 +110,7 @@
       <div class="auth-panel">
         <h2 id="authTitle">内容发布</h2>
         <p class="auth-copy">输入邮箱获取验证码，首次登录会自动创建账号。</p>
-        <p class="auth-switch-copy" id="authSwitchCopy">管理员权限由云函数和数据库判断。</p>
+        <!-- <p class="auth-switch-copy" id="authSwitchCopy">管理员权限由云函数和数据库判断。</p> -->
 
         <form id="authForm" class="auth-form">
           <label class="field">
@@ -153,7 +154,8 @@
 
         <label class="field">
           <span>上传者</span>
-          <input id="uploaderNameInput" name="uploaderName" type="text" autocomplete="name" placeholder="建议格式：专业班级-姓名" required />
+          <input id="uploaderNameInput" name="uploaderName" type="text" autocomplete="name" placeholder="建议格式：专业班级-姓名"
+            required />
         </label>
 
         <div id="articleFields" class="publish-kind-panel">
@@ -222,6 +224,77 @@
     </div>
   </section>
 
+  <section id="aboutDialog" class="about-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <article class="about-panel">
+      <button id="aboutCloseButton" class="about-close" type="button" aria-label="关闭">×</button>
+      <h2 id="aboutTitle">关于诗话桥课程档案</h2>
+
+      <section class="about-section">
+        <h3>合规与说明</h3>
+        <p>本网站为“诗话桥”课程相关内容整理与展示项目，用于课程资料归档、学生作品展示与相关公共资料汇集。除非特别说明，本网站不代表中南大学或相关院系的官方立场。</p>
+        <p>网站中收录的外部文章、视频、报道等内容均尽量保留原始来源链接，相关版权归原作者、发布机构或平台所有。若有内容涉及误收录、版权争议或不适合公开展示，可联系管理员修改或删除。</p>
+      </section>
+
+      <section class="about-section">
+        <h3>关于诗话桥课程</h3>
+        <p>“诗话桥”是一门围绕桥梁文化、文学表达、地域记忆与工程美学展开的课程。课程以“桥”为核心线索，讨论桥梁作为工程结构、交通设施、历史遗存与文化意象的多重意义。</p>
+        <p>在课程学习中，桥不只是连接两岸的建筑，也连接着地方历史、诗词文本、视觉图像、社会生活与个人经验。学生通过阅读、讨论、资料整理、写作与创作，重新理解桥梁背后的文化价值与审美表达。</p>
+      </section>
+
+      <section class="about-section">
+        <h3>为什么建立这个网站</h3>
+        <p>我希望把公开资料、相关报道和学生作品集中保存下来，让“诗话桥”不只停留在一门限时选修课，而拥有可以持续查阅、补充和回看的课程档案。</p>
+        <p>本网站主要整理两类内容：</p>
+        <ol>
+          <li>
+            <strong>外部资讯</strong>
+            <span>收录与“诗话桥 / 诗画桥”相关的公开文章、视频、报道和网络资料，仅做整理、摘要和索引，并尽量保留可回溯的原文链接。</span>
+          </li>
+          <li>
+            <strong>内部课程资料</strong>
+            <span>展示课程参与者发布的课程作业、学习成果、文章、图片、文档、PPT、PDF 等内容，用于课程交流、成果展示与资料归档。</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="about-section">
+        <h3>发布与审核机制</h3>
+        <p>为了保证内容质量和展示边界，普通用户登录后提交的课程相关内容会进入待审核状态，经管理员审核通过后才会公开展示。</p>
+        <p>管理员账号发布的内容会直接公开显示。管理员身份可能根据课程管理需要进行调整。</p>
+      </section>
+
+      <section class="about-section">
+        <h3>内容原则</h3>
+        <p>我希望这个网站保持准确、克制、可追溯：尊重原始来源，尽量保留具体内容页链接；尊重学生作品，避免无关传播或不恰当使用；学生提交内容审核后公开；网站也会随着课程推进和资料整理持续补充。</p>
+      </section>
+
+      <section class="about-section">
+        <h3>版权、隐私与撤回</h3>
+        <p>网站中的外部内容版权归原作者、发布机构或平台所有。本网站仅用于课程资料整理、学习交流和非商业展示。</p>
+        <p>用户登录所使用的邮箱仅用于身份识别、内容发布和审核管理，不用于无关用途。</p>
+        <p>如果你是内容作者、学生作品提交者，或认为某条内容存在版权、隐私、事实错误或不适合公开展示等问题，可以联系管理员申请修改、隐藏或删除。</p>
+      </section>
+
+      <section class="about-section">
+        <h3>反馈与联系</h3>
+        <p>如果你发现内容链接失效、信息有误、来源不准确，或希望补充与“诗话桥”相关的资料，欢迎联系：</p>
+        <p class="about-contact">
+          邮箱：<a href="mailto:17359925693@163.com">17359925693@163.com</a><br />
+          微信：AD17359925693
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h3>致谢</h3>
+        <p>感谢“诗话桥”课程团队的老师们为这门课程付出的心力。</p>
+        <p>感谢每一位各具风采却同样风度翩翩的老师。</p>
+        <p>感谢你们为人师表的温情关怀和循循善诱的旁征博引，让我看见真正的学术研究者，既有严谨求真的精神，也有深厚温润的人文素养。感谢你们把严谨与浪漫同时呈现在我眼前。</p>
+        <p>感谢每一位有缘一同上课的同学，谢谢你们带来的启发。</p>
+        <p>感谢邓迪交设D2301刘昊哲同学为网站提供照片支持，使这个网站拥有了独一无二的视觉记忆。</p>
+      </section>
+    </article>
+  </section>
+
   <template id="itemTemplate">
     <article class="item-card">
       <div class="item-card__meta">
@@ -242,7 +315,7 @@
 
   <script src="https://static.cloudbase.net/cloudbase-js-sdk/latest/cloudbase.full.js"></script>
   <script src="https://unpkg.com/@wangeditor/editor@5.1.23/dist/index.js"></script>
-  <script src="./app.js?v=auth-refresh-20260615" defer></script>
+  <script src="./app.js?v=about-20260615" defer></script>
 </body>
 
 </html>

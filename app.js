@@ -60,6 +60,7 @@ let richTextEditor = null;
 let editorImageAttachments = [];
 
 const landingView = document.querySelector("#landingView");
+const aboutOpenButton = document.querySelector("#aboutOpenButton");
 const appHeader = document.querySelector("#appHeader");
 const appMain = document.querySelector("#appMain");
 const backHomeButton = document.querySelector("#backHomeButton");
@@ -106,6 +107,8 @@ const detailDate = document.querySelector("#detailDate");
 const detailTitle = document.querySelector("#detailTitle");
 const detailBody = document.querySelector("#detailBody");
 const detailFiles = document.querySelector("#detailFiles");
+const aboutDialog = document.querySelector("#aboutDialog");
+const aboutCloseButton = document.querySelector("#aboutCloseButton");
 
 const storageKeys = {
   session: "bridge-session",
@@ -1093,6 +1096,18 @@ function closeDetail() {
   detailDialog.hidden = true;
 }
 
+function openAbout() {
+  aboutDialog.hidden = false;
+  document.body.classList.add("about-is-open");
+  aboutCloseButton.focus();
+}
+
+function closeAbout() {
+  aboutDialog.hidden = true;
+  document.body.classList.remove("about-is-open");
+  aboutOpenButton.focus();
+}
+
 function renderUploader(container, item) {
   const uploaderName = cleanText(item.uploaderName || (item.platform === "site-homework" ? item.author : ""));
   container.hidden = !uploaderName;
@@ -1453,6 +1468,14 @@ logoutButton.addEventListener("click", () => {
 detailCloseButton.addEventListener("click", closeDetail);
 detailDialog.addEventListener("click", (event) => {
   if (event.target === detailDialog) closeDetail();
+});
+aboutOpenButton.addEventListener("click", openAbout);
+aboutCloseButton.addEventListener("click", closeAbout);
+aboutDialog.addEventListener("click", (event) => {
+  if (event.target === aboutDialog) closeAbout();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !aboutDialog.hidden) closeAbout();
 });
 
 sendCodeButton.addEventListener("click", handleSendCode);
