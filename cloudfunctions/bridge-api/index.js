@@ -360,7 +360,7 @@ async function enrichAttachments(attachments = []) {
   const tempUrlMap = await getTempUrlMap(fileIds);
   return attachments.map((file) => ({
     ...file,
-    url: file.url || tempUrlMap.get(file.fileId) || "",
+    url: tempUrlMap.get(file.fileId) || file.url || "",
   }));
 }
 

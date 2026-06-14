@@ -1088,7 +1088,7 @@ async function openDetail(item) {
     await renderAttachments(item.attachments || []);
   } else {
     detailBody.innerHTML = `${renderUploaderHtml(item)}${sanitizeRichHtml(item.bodyHtml || escapeHtml(item.summary || ""))}`;
-    await refreshDetailImages();
+    await refreshDetailImages(item.attachments || []);
   }
 
   detailDialog.hidden = false;
@@ -1144,12 +1144,23 @@ async function renderAttachments(attachments) {
   }
 }
 
-async function refreshDetailImages() {
-  if (!cloudbaseEnv) return;
+async function refreshDetailImages(attachments = []) {
+  const attachmentUrlMap = new Map(
+    attachments
+      .filter((file) => file?.fileId && file.url)
+      .map((file) => [file.fileId, file.url]),
+  );
   const images = [...detailBody.querySelectorAll("img[data-cloud-file-id]")];
   for (const img of images) {
+    const fileId = img.dataset.cloudFileId;
+    const attachmentUrl = attachmentUrlMap.get(fileId);
+    if (attachmentUrl) {
+      img.src = attachmentUrl;
+      continue;
+    }
+    if (!cloudbaseEnv) continue;
     try {
-      img.src = await getTempFileUrl(img.dataset.cloudFileId);
+      img.src = await getTempFileUrl(fileId);
     } catch {
       img.alt = `${img.alt || "图片"}（临时链接生成失败）`;
     }
