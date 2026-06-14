@@ -6,9 +6,10 @@ const app = cloudbase.init({
 
 const db = app.database();
 const _ = db.command;
-const IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+const IMAGE_MAX_BYTES = 25 * 1024 * 1024;
 const DOCUMENT_MAX_BYTES = 100 * 1024 * 1024;
 const DOCUMENT_EXTENSION_RE = /\.(ppt|pptx|pdf|doc|docx)$/i;
+const SITE_PLATFORM = "site-homework";
 
 exports.main = async (event = {}, context = {}) => {
   try {
@@ -39,6 +40,16 @@ exports.main = async (event = {}, context = {}) => {
       return ok({ item: await reviewContent(data.id, data.reviewAction, user) });
     }
 
+    if (action === "listSiteContents") {
+      assertAdmin(user);
+      return ok({ items: await listSiteContents() });
+    }
+
+    if (action === "deleteSiteContent") {
+      assertAdmin(user);
+      return ok(await deleteSiteContent(data.id));
+    }
+
     return fail(`未知操作：${action || "empty"}`, 400);
   } catch (error) {
     return fail(error.message || "云函数执行失败", error.statusCode || 500);
@@ -48,11 +59,9 @@ exports.main = async (event = {}, context = {}) => {
 async function getCurrentUser(context, fallbackUser = {}) {
   const auth = app.auth();
   const authUser = getAuthUserInfo(auth);
-  const endUser = (await auth.getEndUserInfo().catch(() => ({}))) || {};
   const uid = authUser.uid || context.OPENID || context.TCB_UUID || fallbackUser.uid || "";
-  const identities = Array.isArray(endUser.userInfo?.identities) ? endUser.userInfo.identities : [];
-  const identityEmail = identities.map((identity) => identity.email || identity.userName).find(Boolean);
-  const email = normalizeEmail(authUser.email || endUser.userInfo?.email || identityEmail || fallbackUser.email || "");
+  const endUser = await getEndUserInfo(auth, uid);
+  const email = normalizeEmail(authUser.email || pickUserEmail(endUser.userInfo) || fallbackUser.email || "");
   const isAdmin = await isAdminEmail(email);
 
   return {
@@ -69,6 +78,21 @@ function getAuthUserInfo(auth) {
   } catch {
     return {};
   }
+}
+
+async function getEndUserInfo(auth, uid) {
+  if (uid) {
+    const result = await auth.getEndUserInfo(uid).catch(() => null);
+    if (result?.userInfo) return result;
+  }
+
+  return (await auth.getEndUserInfo().catch(() => ({}))) || {};
+}
+
+function pickUserEmail(userInfo = {}) {
+  const identities = Array.isArray(userInfo.identities) ? userInfo.identities : [];
+  const identityEmail = identities.map((identity) => identity.email || identity.userName).find(Boolean);
+  return userInfo.email || identityEmail || "";
 }
 
 async function isAdminEmail(email) {
@@ -143,6 +167,92 @@ async function reviewContent(id, action, user) {
 
   const result = await db.collection("contents").doc(id).get();
   return enrichItem(result.data[0]);
+}
+
+async function listSiteContents() {
+  const items = [];
+  let offset = 0;
+
+  while (true) {
+    const result = await db
+      .collection("contents")
+      .where({ platform: SITE_PLATFORM })
+      .orderBy("submittedAt", "desc")
+      .skip(offset)
+      .limit(100)
+      .get();
+    const batch = Array.isArray(result.data) ? result.data : [];
+    if (!batch.length) break;
+    items.push(...batch);
+    offset += batch.length;
+    if (batch.length < 100) break;
+  }
+
+  return enrichItems(items);
+}
+
+async function deleteSiteContent(id) {
+  if (!id) throw makeError("缺少内容 ID", 400);
+  const result = await db.collection("contents").doc(id).get();
+  const item = Array.isArray(result.data) ? result.data[0] : result.data;
+  if (!item) throw makeError("内容不存在", 404);
+  if (item.platform !== SITE_PLATFORM) throw makeError("只能删除站内上传内容", 400);
+
+  const fileIds = collectContentFileIds(item);
+  await db.collection("contents").doc(id).remove();
+  const fileResult = await deleteCloudFiles([...fileIds]);
+
+  return {
+    deleted: 1,
+    id,
+    filesRequested: fileResult.requested,
+    filesDeleted: fileResult.deleted,
+    filesFailed: fileResult.failed,
+  };
+}
+
+function collectContentFileIds(item = {}) {
+  const fileIds = [];
+  const attachments = Array.isArray(item.attachments) ? item.attachments : [];
+  attachments.forEach((file) => {
+    if (file?.fileId) fileIds.push(cleanText(file.fileId));
+  });
+
+  String(item.bodyHtml || "").replace(/data-cloud-file-id=["']([^"']+)["']/g, (_, fileId) => {
+    fileIds.push(cleanText(fileId));
+    return "";
+  });
+
+  return fileIds.filter(Boolean);
+}
+
+async function deleteCloudFiles(fileIds = []) {
+  const unique = [...new Set(fileIds.filter(Boolean))];
+  const stats = { requested: unique.length, deleted: 0, failed: 0 };
+
+  for (let index = 0; index < unique.length; index += 50) {
+    const fileList = unique.slice(index, index + 50);
+    try {
+      const result = await app.deleteFile({ fileList });
+      const list = Array.isArray(result.fileList) ? result.fileList : [];
+      if (!list.length) {
+        stats.deleted += fileList.length;
+        continue;
+      }
+      for (const file of list) {
+        const code = String(file.code || file.status || "").toUpperCase();
+        if (!code || code === "SUCCESS" || code === "0") {
+          stats.deleted += 1;
+        } else {
+          stats.failed += 1;
+        }
+      }
+    } catch {
+      stats.failed += fileList.length;
+    }
+  }
+
+  return stats;
 }
 
 function sanitizeItem(item = {}, user) {
@@ -224,7 +334,7 @@ function sanitizeImageAttachment(file = {}) {
     alt: cleanText(file.alt).slice(0, 160),
   };
   if (!attachment.fileId && !attachment.url) throw makeError("图片缺少存储标识", 400);
-  if (attachment.size > IMAGE_MAX_BYTES) throw makeError("图片大小不能超过 5MB", 400);
+  if (attachment.size > IMAGE_MAX_BYTES) throw makeError("图片大小不能超过 25MB", 400);
   return attachment;
 }
 

@@ -10,7 +10,8 @@
   <meta name="bridge-cloudbase-function" content="bridge-api" />
   <meta name="bridge-admin-emails" content="" />
   <title>诗话桥 / 诗画桥 内容档案</title>
-  <link rel="stylesheet" href="./styles.css?v=cloudbase-homework-20260614" />
+  <link rel="stylesheet" href="https://unpkg.com/@wangeditor/editor@5.1.23/dist/css/style.css" />
+  <link rel="stylesheet" href="./styles.css?v=wangeditor-20260614" />
 </head>
 
 <body>
@@ -52,21 +53,14 @@
 
         <div class="control-group" role="group" aria-label="平台">
           <button class="chip is-active" data-filter="platform" data-value="all">全部平台</button>
-          <button class="chip" data-filter="platform" data-value="wechat-search">微信搜索</button>
+          <button class="chip" data-filter="platform" data-value="wechat-search">微信公众号</button>
           <button class="chip" data-filter="platform" data-value="csu-bridge-center">中南大学古桥研究中心</button>
-          <button class="chip" data-filter="platform" data-value="site-homework">站内作业</button>
-          <button class="chip" data-filter="platform" data-value="xingchen-news">星辰在线</button>
+          <button class="chip" data-filter="platform" data-value="site-homework">站内资源</button>
           <button class="chip" data-filter="platform" data-value="bilibili">B站</button>
           <button class="chip" data-filter="platform" data-value="weibo">微博</button>
         </div>
 
         <div class="control-row">
-          <div class="segmented" role="group" aria-label="内容分类">
-            <button class="segment is-active" data-filter="category" data-value="all">全部</button>
-            <button class="segment" data-filter="category" data-value="news">资讯</button>
-            <button class="segment" data-filter="category" data-value="homework">作业展示</button>
-          </div>
-
           <div class="segmented" role="group" aria-label="内容类型">
             <button class="segment is-active" data-filter="type" data-value="all">全部</button>
             <button class="segment" data-filter="type" data-value="article">文章</button>
@@ -108,9 +102,7 @@
       </section>
 
       <section id="contentGrid" class="content-grid" aria-live="polite"></section>
-      <p id="emptyState" class="empty-state" hidden>
-        暂无通过核验的内容。请把带有精准 sourceUrl 和准确 summary 的内容数据写入 data/items.json。
-      </p>
+      <p id="emptyState" class="empty-state" hidden>当前没有满足条件的内容</p>
     </section>
 
     <section id="authView" class="view auth-view" aria-labelledby="authTitle" hidden>
@@ -161,34 +153,17 @@
 
         <label class="field">
           <span>上传者</span>
-          <input id="uploaderNameInput" name="uploaderName" type="text" autocomplete="name" required />
+          <input id="uploaderNameInput" name="uploaderName" type="text" autocomplete="name" placeholder="建议格式：专业班级-姓名" required />
         </label>
 
         <div id="articleFields" class="publish-kind-panel">
-          <label class="field">
+          <div class="field">
             <span>正文内容</span>
-            <div class="editor-toolbar" aria-label="正文编辑工具">
-              <button type="button" data-editor-command="bold">B</button>
-              <button type="button" data-editor-command="italic">I</button>
-              <button type="button" data-editor-command="underline">U</button>
-              <select id="fontFamilySelect" aria-label="字体">
-                <option value="">字体</option>
-                <option value="Songti SC, STSong, SimSun, serif">宋体</option>
-                <option value="Noto Sans SC, Microsoft YaHei, sans-serif">黑体</option>
-                <option value="KaiTi, STKaiti, serif">楷体</option>
-              </select>
-              <select id="fontSizeSelect" aria-label="字号">
-                <option value="">字号</option>
-                <option value="3">正文</option>
-                <option value="4">稍大</option>
-                <option value="5">标题</option>
-              </select>
-              <button type="button" id="insertImageButton">插入图片</button>
+            <div class="rich-editor-shell">
+              <div id="articleToolbar" class="editor-toolbar" aria-label="正文编辑工具"></div>
+              <div id="articleEditor" class="rich-editor"></div>
             </div>
-            <div id="articleEditor" class="rich-editor" contenteditable="true" role="textbox" aria-multiline="true">
-            </div>
-            <input id="articleImageInput" type="file" accept="image/*" hidden />
-          </label>
+          </div>
         </div>
 
         <div id="fileFields" class="publish-kind-panel" hidden>
@@ -212,7 +187,23 @@
           <h2 id="reviewTitle">待审核内容</h2>
           <p id="reviewMeta">正在载入...</p>
         </div>
+        <div class="admin-manage-zone">
+          <button class="secondary-action manage-entry" type="button" data-route="manage-site">修改站内上传内容</button>
+        </div>
         <div id="reviewList" class="review-list"></div>
+      </section>
+    </section>
+
+    <section id="manageSiteView" class="view manage-site-view" aria-labelledby="manageSiteTitle" hidden>
+      <section class="review-panel manage-panel">
+        <div class="form-head">
+          <h2 id="manageSiteTitle">修改站内上传内容</h2>
+          <p id="manageSiteMeta">正在载入...</p>
+        </div>
+        <div class="manage-toolbar">
+          <button class="secondary-action" type="button" data-route="publish">返回发布内容</button>
+        </div>
+        <div id="manageSiteList" class="manage-list"></div>
       </section>
     </section>
   </main>
@@ -250,7 +241,8 @@
   </template>
 
   <script src="https://static.cloudbase.net/cloudbase-js-sdk/latest/cloudbase.full.js"></script>
-  <script src="./app.js?v=cloudbase-homework-20260614" defer></script>
+  <script src="https://unpkg.com/@wangeditor/editor@5.1.23/dist/index.js"></script>
+  <script src="./app.js?v=wangeditor-20260614" defer></script>
 </body>
 
 </html>

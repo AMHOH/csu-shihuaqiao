@@ -1,5 +1,5 @@
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
-const IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+const IMAGE_MAX_BYTES = 25 * 1024 * 1024;
 const DOCUMENT_MAX_BYTES = 100 * 1024 * 1024;
 
 const state = {
@@ -11,6 +11,7 @@ const state = {
   items: [],
   remoteItems: [],
   pendingItems: [],
+  siteItems: [],
   currentUser: null,
   activeRoute: "landing",
   pendingRoute: "publish",
@@ -20,9 +21,9 @@ const state = {
 };
 
 const platformLabels = {
-  "wechat-search": "微信搜索",
+  "wechat-search": "微信公众号",
   "csu-bridge-center": "中南大学古桥研究中心",
-  "site-homework": "站内作业",
+  "site-homework": "站内资源",
   "hunan-cppcc-news": "湖南政协新闻网",
   "yueyang-news": "岳阳新闻网",
   "visit-beijing": "北京旅游网",
@@ -55,6 +56,8 @@ const fallbackAdminEmails = new Set(
 
 let cloudbaseApp = null;
 let cloudbaseAuth = null;
+let richTextEditor = null;
+let editorImageAttachments = [];
 
 const landingView = document.querySelector("#landingView");
 const appHeader = document.querySelector("#appHeader");
@@ -63,6 +66,7 @@ const backHomeButton = document.querySelector("#backHomeButton");
 const archiveView = document.querySelector("#archiveView");
 const authView = document.querySelector("#authView");
 const publishView = document.querySelector("#publishView");
+const manageSiteView = document.querySelector("#manageSiteView");
 const grid = document.querySelector("#contentGrid");
 const template = document.querySelector("#itemTemplate");
 const emptyState = document.querySelector("#emptyState");
@@ -86,14 +90,13 @@ const logoutButton = document.querySelector("#logoutButton");
 const reviewPanel = document.querySelector("#reviewPanel");
 const reviewMeta = document.querySelector("#reviewMeta");
 const reviewList = document.querySelector("#reviewList");
+const manageSiteMeta = document.querySelector("#manageSiteMeta");
+const manageSiteList = document.querySelector("#manageSiteList");
 const publishKindInput = document.querySelector("#publishKind");
 const articleFields = document.querySelector("#articleFields");
 const fileFields = document.querySelector("#fileFields");
 const articleEditor = document.querySelector("#articleEditor");
-const articleImageInput = document.querySelector("#articleImageInput");
-const insertImageButton = document.querySelector("#insertImageButton");
-const fontFamilySelect = document.querySelector("#fontFamilySelect");
-const fontSizeSelect = document.querySelector("#fontSizeSelect");
+const articleToolbar = document.querySelector("#articleToolbar");
 const documentFileInput = document.querySelector("#documentFileInput");
 const detailDialog = document.querySelector("#detailDialog");
 const detailCloseButton = document.querySelector("#detailCloseButton");
@@ -149,6 +152,14 @@ const api = {
   async reviewItem(id, action) {
     return this.request("reviewContent", { id, reviewAction: action });
   },
+
+  async listSiteItems() {
+    return this.request("listSiteContents");
+  },
+
+  async deleteSiteItem(id) {
+    return this.request("deleteSiteContent", { id });
+  },
 };
 
 async function requestLegacyApi(action, data) {
@@ -161,6 +172,8 @@ async function requestLegacyApi(action, data) {
       method: "POST",
       body: { action: data.reviewAction },
     },
+    listSiteContents: { path: "/admin/site-contents", method: "GET" },
+    deleteSiteContent: { path: `/admin/site-contents/${encodeURIComponent(data.id)}`, method: "DELETE" },
     me: { path: "/auth/me", method: "GET" },
   };
   const target = map[action];
@@ -373,11 +386,11 @@ function showView(route) {
     return;
   }
 
-  const needsAuth = route === "publish";
+  const needsAuth = route === "publish" || route === "manage-site";
   const nextRoute = needsAuth && !state.currentUser ? "auth" : route;
 
   if (needsAuth && !state.currentUser) {
-    state.pendingRoute = "publish";
+    state.pendingRoute = route;
     updateAuthCopy();
   }
 
@@ -388,20 +401,31 @@ function showView(route) {
   archiveView.hidden = nextRoute !== "archive";
   authView.hidden = nextRoute !== "auth";
   publishView.hidden = nextRoute !== "publish";
+  manageSiteView.hidden = nextRoute !== "manage-site";
   archiveView.classList.toggle("is-active", nextRoute === "archive");
   authView.classList.toggle("is-active", nextRoute === "auth");
   publishView.classList.toggle("is-active", nextRoute === "publish");
+  manageSiteView.classList.toggle("is-active", nextRoute === "manage-site");
 
   if (nextRoute === "publish") {
     updateAuthAwareUi();
+    initRichTextEditor();
     loadPendingItems();
+  }
+
+  if (nextRoute === "manage-site") {
+    if (!isAdmin()) {
+      showView("publish");
+      return;
+    }
+    loadSiteItems();
   }
 
   updateViewToggle(nextRoute);
 }
 
 function updateViewToggle(activeRoute = state.activeRoute) {
-  const selectedRoute = activeRoute === "auth" ? "publish" : activeRoute;
+  const selectedRoute = activeRoute === "auth" || activeRoute === "manage-site" ? "publish" : activeRoute;
 
   document.querySelectorAll('.site-nav [data-route="archive"], .site-nav [data-route="publish"]').forEach((button) => {
     const isActive = button.dataset.route === selectedRoute;
@@ -480,7 +504,8 @@ async function handleAuthSubmit(event) {
     return;
   }
 
-  if (state.otpEmail !== email || typeof state.otpVerification !== "function") {
+  const hasVerification = cloudbaseEnv ? Boolean(state.otpVerification) : typeof state.otpVerification === "function";
+  if (state.otpEmail !== email || !hasVerification) {
     authMessage.textContent = "请先获取验证码。";
     return;
   }
@@ -537,6 +562,7 @@ async function handlePublishSubmit(event) {
     if (normalized.status === "approved") {
       state.items = mergeById([normalized, ...state.items]);
       saveLocalPublicItem(normalized);
+      focusPublishedItem(normalized);
       render();
     } else {
       state.pendingItems = mergeById([normalized, ...state.pendingItems]);
@@ -594,16 +620,17 @@ async function getPublishFormItem() {
     };
   }
 
-  const rawHtml = articleEditor.innerHTML.trim();
-  const text = cleanText(articleEditor.textContent || "");
-  if (!text && !articleEditor.querySelector("img")) throw new Error("请填写正文内容。");
+  const rawHtml = getEditorHtml();
+  const text = getEditorText();
+  const attachments = collectEditorImages(rawHtml);
+  if (!text && attachments.length === 0) throw new Error("请填写正文内容。");
 
   return {
     ...base,
     summary: truncate(text || "图片作业展示", 120),
     bodyHtml: sanitizeRichHtml(rawHtml),
     bodyText: text,
-    attachments: collectEditorImages(),
+    attachments,
   };
 }
 
@@ -697,6 +724,99 @@ async function reviewItem(id, action) {
   }
 }
 
+async function loadSiteItems() {
+  if (!isAdmin()) return;
+
+  manageSiteMeta.textContent = "正在载入...";
+  manageSiteList.innerHTML = "";
+
+  try {
+    if (cloudbaseEnv || apiBase) {
+      const response = await api.listSiteItems();
+      state.siteItems = Array.isArray(response) ? response : response.items || [];
+    } else {
+      state.siteItems = getLocalSiteItems();
+    }
+  } catch (error) {
+    manageSiteMeta.textContent = error.message || "站内上传内容载入失败。";
+    return;
+  }
+
+  renderSiteItems();
+}
+
+function renderSiteItems() {
+  manageSiteList.innerHTML = "";
+  manageSiteMeta.textContent = state.siteItems.length ? `${state.siteItems.length} 条站内上传内容` : "当前没有站内上传内容";
+
+  for (const item of state.siteItems) {
+    const card = document.createElement("article");
+    card.className = "manage-card";
+    card.innerHTML = `
+      <div class="review-card__meta">
+        <span>${escapeHtml(typeLabels[item.type] || item.type || "内容")}</span>
+        <span>${escapeHtml(statusLabel(item.status))}</span>
+        <time>${escapeHtml(item.displayDate || formatDate(item.publishedAt || item.submittedAt))}</time>
+      </div>
+      <h3>${escapeHtml(item.title || "未命名内容")}</h3>
+      <p>${escapeHtml(item.summary || "")}</p>
+      ${renderManageUploaderHtml(item)}
+      <div class="review-card__actions">
+        <button class="secondary-action" type="button" data-open-site-item="${escapeAttribute(item.id)}">查看内容</button>
+        <button class="danger-action" type="button" data-delete-site-item="${escapeAttribute(item.id)}">删除</button>
+      </div>
+    `;
+    manageSiteList.append(card);
+  }
+}
+
+function renderManageUploaderHtml(item) {
+  const uploaderName = cleanText(item.uploaderName || item.author || "");
+  return uploaderName ? `<p class="manage-card__uploader">上传者：${escapeHtml(uploaderName)}</p>` : "";
+}
+
+function statusLabel(status) {
+  const labels = {
+    approved: "已公开",
+    pending: "待审核",
+    rejected: "已拒绝",
+  };
+  return labels[status] || "未记录";
+}
+
+async function handleDeleteSiteItem(button) {
+  if (!isAdmin()) return;
+  const id = button.dataset.deleteSiteItem;
+  const item = state.siteItems.find((entry) => entry.id === id);
+  if (!item) return;
+
+  const confirmed = window.confirm(`确定删除“${item.title || "未命名内容"}”吗？`);
+  if (!confirmed) return;
+
+  button.disabled = true;
+  manageSiteMeta.textContent = "正在删除...";
+
+  try {
+    if (cloudbaseEnv || apiBase) {
+      await api.deleteSiteItem(id);
+    } else {
+      removeLocalSiteItem(id);
+    }
+
+    state.siteItems = state.siteItems.filter((entry) => entry.id !== id);
+    state.items = state.items.filter((entry) => entry.id !== id);
+    state.pendingItems = state.pendingItems.filter((entry) => entry.id !== id);
+    render();
+    renderPendingItems();
+    renderSiteItems();
+    manageSiteMeta.textContent = `已删除“${item.title || "未命名内容"}”。`;
+  } catch (error) {
+    manageSiteMeta.textContent = error.message || "删除失败，请稍后重试。";
+  } finally {
+    button.disabled = false;
+  }
+}
+
 function setPublishKind(kind) {
   state.publishKind = kind;
   publishKindInput.value = kind;
@@ -708,50 +828,30 @@ function setPublishKind(kind) {
   publishMessage.textContent = "";
 }
 
+function focusPublishedItem(item) {
+  if (item.platform !== "site-homework") return;
+  setFilterValue("platform", "site-homework");
+  state.category = "all";
+  setFilterValue("type", item.type || "all");
+  showView("archive");
+}
+
+function setFilterValue(filter, value) {
+  state[filter] = value;
+  document.querySelectorAll(`[data-filter="${filter}"]`).forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.value === value);
+  });
+}
+
 function resetPublishForm() {
   publishForm.reset();
-  articleEditor.innerHTML = "";
+  setEditorHtml("");
   setPublishKind("article");
-}
-
-function handleEditorCommand(command) {
-  articleEditor.focus();
-  document.execCommand(command, false);
-}
-
-function handleFontFamily(value) {
-  if (!value) return;
-  articleEditor.focus();
-  document.execCommand("fontName", false, value);
-  fontFamilySelect.value = "";
-}
-
-function handleFontSize(value) {
-  if (!value) return;
-  articleEditor.focus();
-  document.execCommand("fontSize", false, value);
-  fontSizeSelect.value = "";
-}
-
-async function handleImageSelected() {
-  const file = articleImageInput.files?.[0];
-  articleImageInput.value = "";
-  if (!file) return;
-
-  try {
-    validateImage(file);
-    publishMessage.textContent = "正在插入图片...";
-    const image = await uploadEditorImage(file);
-    insertEditorImage(image.url, image.fileId, file.name);
-    publishMessage.textContent = "";
-  } catch (error) {
-    publishMessage.textContent = error.message || "图片插入失败。";
-  }
 }
 
 function validateImage(file) {
   if (!file.type.startsWith("image/")) throw new Error("请选择图片文件。");
-  if (file.size > IMAGE_MAX_BYTES) throw new Error("图片大小不能超过 5MB。");
+  if (file.size > IMAGE_MAX_BYTES) throw new Error("图片大小不能超过 25MB。");
 }
 
 function validateDocument(file) {
@@ -811,20 +911,136 @@ async function getTempFileUrl(fileId) {
   return file.tempFileURL;
 }
 
-function insertEditorImage(url, fileId, alt) {
-  articleEditor.focus();
-  const html = `<img src="${escapeAttribute(url)}" alt="${escapeAttribute(alt || "插图")}"${fileId ? ` data-cloud-file-id="${escapeAttribute(fileId)}"` : ""}>`;
-  document.execCommand("insertHTML", false, html);
+function initRichTextEditor() {
+  if (!window.wangEditor || richTextEditor) return;
+
+  const { createEditor, createToolbar } = window.wangEditor;
+  richTextEditor = createEditor({
+    selector: articleEditor,
+    html: "",
+    mode: "default",
+    config: {
+      placeholder: "填写正文内容，可插入图片。",
+      scroll: false,
+      MENU_CONF: {
+        uploadImage: {
+          maxFileSize: IMAGE_MAX_BYTES,
+          allowedFileTypes: ["image/*"],
+          async customUpload(file, insertFn) {
+            try {
+              validateImage(file);
+              publishMessage.textContent = "正在上传图片...";
+              const image = await uploadEditorImage(file);
+              editorImageAttachments = mergeEditorImages([
+                ...editorImageAttachments,
+                {
+                  fileId: image.fileId,
+                  url: image.url,
+                  alt: file.name,
+                  fileName: file.name,
+                  size: file.size,
+                  type: file.type,
+                },
+              ]);
+              insertFn(image.url, file.name, "");
+              publishMessage.textContent = "";
+            } catch (error) {
+              publishMessage.textContent = error.message || "图片上传失败。";
+            }
+          },
+        },
+      },
+    },
+  });
+
+  createToolbar({
+    editor: richTextEditor,
+    selector: articleToolbar,
+    mode: "default",
+    config: {
+      toolbarKeys: [
+        "undo",
+        "redo",
+        "clearStyle",
+        "|",
+        "fontSize",
+        "fontFamily",
+        "bold",
+        "italic",
+        "underline",
+        "through",
+        "color",
+        "bgColor",
+        "|",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight",
+        "numberedList",
+        "bulletedList",
+        "|",
+        "uploadImage",
+      ],
+    },
+  });
 }
 
-function collectEditorImages() {
-  return [...articleEditor.querySelectorAll("img")]
+function getEditorHtml() {
+  const html = richTextEditor ? richTextEditor.getHtml().trim() : articleEditor.innerHTML.trim();
+  return attachEditorImageIds(html);
+}
+
+function getEditorText() {
+  return cleanText(richTextEditor ? richTextEditor.getText() : articleEditor.textContent || "");
+}
+
+function setEditorHtml(html) {
+  editorImageAttachments = [];
+  if (richTextEditor) {
+    richTextEditor.clear();
+    if (html) richTextEditor.setHtml(html);
+  } else {
+    articleEditor.innerHTML = html;
+  }
+}
+
+function collectEditorImages(html = getEditorHtml()) {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  const htmlImages = [...template.content.querySelectorAll("img")]
     .map((img) => ({
-      fileId: img.dataset.cloudFileId || "",
+      fileId: img.dataset.cloudFileId || findEditorImageByUrl(img.getAttribute("src") || "")?.fileId || "",
       url: img.getAttribute("src") || "",
       alt: img.getAttribute("alt") || "",
+      fileName: img.getAttribute("alt") || "",
+      size: findEditorImageByUrl(img.getAttribute("src") || "")?.size || 0,
+      type: findEditorImageByUrl(img.getAttribute("src") || "")?.type || "",
     }))
     .filter((item) => item.fileId || item.url);
+  return mergeEditorImages(htmlImages);
+}
+
+function attachEditorImageIds(html) {
+  const template = document.createElement("template");
+  template.innerHTML = html || "";
+  template.content.querySelectorAll("img").forEach((img) => {
+    const attachment = findEditorImageByUrl(img.getAttribute("src") || "");
+    if (!attachment?.fileId) return;
+    img.dataset.cloudFileId = attachment.fileId;
+  });
+  return template.innerHTML;
+}
+
+function findEditorImageByUrl(url) {
+  return editorImageAttachments.find((item) => item.url === url);
+}
+
+function mergeEditorImages(images) {
+  const map = new Map();
+  for (const image of images) {
+    const key = image.fileId || image.url;
+    if (key) map.set(key, image);
+  }
+  return [...map.values()];
 }
 
 function renderTags(container, tags = [], excludedTags = []) {
@@ -923,7 +1139,7 @@ async function refreshDetailImages() {
 }
 
 function findItemById(id) {
-  return [...state.items, ...state.pendingItems].find((item) => item.id === id);
+  return [...state.items, ...state.pendingItems, ...state.siteItems].find((item) => item.id === id);
 }
 
 function formatDate(value) {
@@ -985,6 +1201,17 @@ function saveLocalPublicItem(item) {
 
 function getLocalPendingItems() {
   return readJson(storageKeys.pendingItems, []);
+}
+
+function getLocalSiteItems() {
+  return mergeById([...getLocalPendingItems(), ...getLocalPublicItems()]).filter((item) => item.platform === "site-homework");
+}
+
+function removeLocalSiteItem(id) {
+  const publicItems = getLocalPublicItems().filter((item) => item.id !== id);
+  const pendingItems = getLocalPendingItems().filter((item) => item.id !== id);
+  localStorage.setItem(storageKeys.publicItems, JSON.stringify(publicItems));
+  localStorage.setItem(storageKeys.pendingItems, JSON.stringify(pendingItems));
 }
 
 function saveLocalPendingItems(items) {
@@ -1067,8 +1294,8 @@ function readFileAsDataUrl(file) {
 function sanitizeRichHtml(html) {
   const template = document.createElement("template");
   template.innerHTML = html || "";
-  const allowedTags = new Set(["A", "B", "BR", "DIV", "EM", "FONT", "I", "IMG", "LI", "OL", "P", "SPAN", "STRONG", "U", "UL"]);
-  const allowedAttrs = new Set(["alt", "data-cloud-file-id", "face", "href", "size", "src", "target", "title"]);
+  const allowedTags = new Set(["A", "B", "BLOCKQUOTE", "BR", "CODE", "DIV", "EM", "FONT", "H1", "H2", "H3", "H4", "HR", "I", "IMG", "LI", "OL", "P", "PRE", "S", "SPAN", "STRONG", "SUB", "SUP", "U", "UL"]);
+  const allowedAttrs = new Set(["alt", "class", "data-cloud-file-id", "face", "href", "size", "src", "style", "target", "title"]);
 
   template.content.querySelectorAll("*").forEach((node) => {
     if (!allowedTags.has(node.tagName)) {
@@ -1085,6 +1312,14 @@ function sanitizeRichHtml(html) {
       if ((name === "href" || name === "src") && !isSafeUrl(attr.value)) {
         node.removeAttribute(attr.name);
       }
+      if (name === "style") {
+        const safeStyle = sanitizeInlineStyle(attr.value);
+        if (safeStyle) {
+          node.setAttribute("style", safeStyle);
+        } else {
+          node.removeAttribute(attr.name);
+        }
+      }
     });
 
     if (node.tagName === "A") {
@@ -1094,6 +1329,32 @@ function sanitizeRichHtml(html) {
   });
 
   return template.innerHTML;
+}
+
+function sanitizeInlineStyle(value = "") {
+  const allowedProps = new Set([
+    "background-color",
+    "color",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "text-align",
+    "text-decoration",
+  ]);
+  return String(value)
+    .split(";")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const [rawName, ...rawValue] = part.split(":");
+      const name = rawName.trim().toLowerCase();
+      const propValue = rawValue.join(":").trim();
+      if (!allowedProps.has(name) || !propValue || /url\s*\(|expression\s*\(/i.test(propValue)) return "";
+      return `${name}: ${propValue}`;
+    })
+    .filter(Boolean)
+    .join("; ");
 }
 
 function isSafeUrl(value = "") {
@@ -1130,6 +1391,19 @@ document.addEventListener("click", async (event) => {
     return;
   }
 
+  const deleteSiteButton = event.target.closest("[data-delete-site-item]");
+  if (deleteSiteButton) {
+    handleDeleteSiteItem(deleteSiteButton);
+    return;
+  }
+
+  const openSiteButton = event.target.closest("[data-open-site-item]");
+  if (openSiteButton) {
+    event.preventDefault();
+    await openDetail(findItemById(openSiteButton.dataset.openSiteItem));
+    return;
+  }
+
   const openButton = event.target.closest("[data-open-item]");
   if (openButton) {
     event.preventDefault();
@@ -1140,12 +1414,6 @@ document.addEventListener("click", async (event) => {
   const publishKindButton = event.target.closest("[data-publish-kind]");
   if (publishKindButton) {
     setPublishKind(publishKindButton.dataset.publishKind);
-    return;
-  }
-
-  const editorButton = event.target.closest("[data-editor-command]");
-  if (editorButton) {
-    handleEditorCommand(editorButton.dataset.editorCommand);
     return;
   }
 
@@ -1189,10 +1457,6 @@ detailDialog.addEventListener("click", (event) => {
 sendCodeButton.addEventListener("click", handleSendCode);
 authForm.addEventListener("submit", handleAuthSubmit);
 publishForm.addEventListener("submit", handlePublishSubmit);
-insertImageButton.addEventListener("click", () => articleImageInput.click());
-articleImageInput.addEventListener("change", handleImageSelected);
-fontFamilySelect.addEventListener("change", (event) => handleFontFamily(event.target.value));
-fontSizeSelect.addEventListener("change", (event) => handleFontSize(event.target.value));
 
 loadSession();
 showView("landing");

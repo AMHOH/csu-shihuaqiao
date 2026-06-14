@@ -33,6 +33,8 @@ python3 -m http.server 4173
 - `submitContent`：提交站内作业展示；普通用户保存为 `pending`，管理员保存为 `approved`
 - `listPendingContents`：管理员获取待审核内容
 - `reviewContent`：管理员通过或拒绝内容
+- `listSiteContents`：管理员获取所有站内上传内容
+- `deleteSiteContent`：管理员删除单条站内上传内容，并尝试删除对应 CloudBase 文件
 
 管理员身份必须由云函数查询 CloudBase 数据库判断。建议创建 `admins` 集合：
 
@@ -47,10 +49,15 @@ python3 -m http.server 4173
 
 站内发布目前支持：
 
-- 文章：标题、上传者、富文本正文、插入图片。图片前端限制 5MB。
+- 文章：标题、上传者、wangEditor 富文本正文、插入图片。图片通过 CloudBase 上传，前端限制 25MB。
 - 文件：标题、上传者、PPT / PDF / Word 文件。文件前端限制 100MB。
 
 日期由系统按提交/发布当天生成，精确到日。所有站内发布内容都会自动带 `作业展示` 标签。
+
+上线后删除站内上传内容有两种方式：
+
+- 管理员登录前端，进入“发布内容”，在“待审核内容”区域点击“修改站内上传内容”，进入管理页后逐条查看或删除。
+- 在 CloudBase 控制台进入数据库 `contents` 集合，筛选 `platform == "site-homework"`，选中具体记录后删除。文件型或图片型内容对应的 CloudBase 存储文件需要在“云存储”里按附件 `fileId` 继续清理。
 
 ## 数据更新
 
