@@ -56,6 +56,7 @@ const fallbackAdminEmails = new Set(
 
 let cloudbaseApp = null;
 let cloudbaseAuth = null;
+let anonymousSignInPromise = null;
 let richTextEditor = null;
 let editorImageAttachments = [];
 
@@ -120,6 +121,7 @@ const api = {
   async request(action, data = {}) {
     if (cloudbaseEnv) {
       const app = getCloudbaseApp();
+      if (action === "listPublicContents") await ensureAnonymousCloudbaseAuth();
       const response = await app.callFunction({
         name: cloudbaseFunctionName,
         data: { action, data },
@@ -1292,6 +1294,21 @@ function getCloudbaseAuth() {
     throw new Error("当前 CloudBase SDK 不支持邮箱验证码登录，请检查 SDK 版本。");
   }
   return cloudbaseAuth;
+}
+
+async function ensureAnonymousCloudbaseAuth() {
+  if (state.currentUser) return;
+  const auth = getCloudbaseAuth();
+  if (typeof auth.getLoginState === "function") {
+    const loginState = await auth.getLoginState().catch(() => null);
+    if (loginState) return;
+  }
+  if (typeof auth.signInAnonymously !== "function") return;
+
+  anonymousSignInPromise ||= auth.signInAnonymously().finally(() => {
+    anonymousSignInPromise = null;
+  });
+  await anonymousSignInPromise;
 }
 
 function safeFileName(name) {
