@@ -450,6 +450,7 @@ async function signIn(user) {
   const normalized = normalizeUser(user);
   const profile = await fetchCurrentUserProfile(normalized);
   persistSession(profile);
+  await loadItems();
   showView(state.pendingRoute || "publish");
 }
 

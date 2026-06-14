@@ -15,14 +15,15 @@ exports.main = async (event = {}, context = {}) => {
   try {
     const action = event.action;
     const data = event.data || {};
+
+    if (action === "listPublicContents") {
+      return ok({ items: await listPublicContents() });
+    }
+
     const user = await getCurrentUser(context, action === "me" ? data.fallbackUser : {});
 
     if (action === "me") {
       return ok({ user });
-    }
-
-    if (action === "listPublicContents") {
-      return ok({ items: await listPublicContents() });
     }
 
     if (action === "submitContent") {
